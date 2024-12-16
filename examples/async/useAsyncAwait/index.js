@@ -14,5 +14,4 @@ async function getCountriesData(){
 }
 
 
-sdmsd
 getCountriesData()
