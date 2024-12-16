@@ -7,6 +7,7 @@ var jwt = require("jsonwebtoken");
 const axios = require("axios");
 const bodyParser = require("body-parser");
 NODE_TLS_REJECT_UNAUTHORIZED = 0;
+const data = require("./data/index.json")
 
 const app = express();
 app.use(cors());
@@ -22,6 +23,12 @@ app.get("/employees", async (req, res, next) => {
   const [result] = await getConnection().execute(query);
   res.json(result);
 });
+
+app.get("/countries-elbit", async (req, res, next) => {
+ 
+  res.json(data);
+});
+
 
 app.get("/health-check", (req, res, next) => {
   res.json({ message: "Api v2 is ready" });
