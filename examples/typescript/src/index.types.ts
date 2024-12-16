@@ -74,6 +74,17 @@ function senduserToApi(user: Partial<UserWithPermissions>) {
   return user;
 }
 
-const newSubscriber: Pick<Subscriber, "password"> & Superuser & User = {
-  
+// const newSubscriber: Pick<Subscriber, "password"> & Superuser & User = {
+
+// };
+
+const newSubscriber: Subscriber | Superuser = {
+  password: "aa",
+  userName: "galamo",
+  isAdmin: true,
 };
+
+getUser(111);
+function getUser(userId: string | number) {
+  return [];
+}

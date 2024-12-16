@@ -34,4 +34,14 @@ senduserToApi(u);
 function senduserToApi(user) {
     return user;
 }
-// const newSubscriber: Pick<Subscriber, "password"> & Superuser & User = {};
+// const newSubscriber: Pick<Subscriber, "password"> & Superuser & User = {
+// };
+const newSubscriber = {
+    password: "aa",
+    userName: "galamo",
+    isAdmin: true,
+};
+getUser(111);
+function getUser(userId) {
+    return [];
+}
