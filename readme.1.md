@@ -7,9 +7,40 @@
 3. async await
 
 
-## Ex 
+### **Exercise_1: Async await**
+#### Option_1
+Write a function that gets all the countries from the following api: 
 
-### Typescript
+- store all the countries names in array.
+- create an function that return each region and the number of countries inside.
+- create an function that filter all the countries that has more than 
+
+Print the number of countries for each region
+
+1. create a new folder - getCountries
+2. create `index.js` file inside.
+3. run `npm init -y`
+4. run `npm i axios`
+5. write your code.
+#### Option_2
+Write a function that gets all the users from the following api: `https://randomuser.me/api/?results=10`
+
+- store all the user names in array.
+- create an function that return each gender and the number of users.
+- create an function that filter and gets all the user with `country: Canada`
+
+Print the number of countries for each region
+
+1. create a new folder - getUsersApp
+2. create `index.js` file inside.
+3. run `npm init -y`
+4. run `npm i axios`
+5. write your code.
+
+
+
+
+# Typescript
 
 - `npm init -y` - create new module based on the folder name
 - install global - `npm install -g typescript`
@@ -21,6 +52,18 @@
 # Types
 - Example primitive types
 
+# Json Based Type
+
+### **Exercise_1: Create a type based JSON**
+1. crate new type based on JSON - Users
+2. Create a Single User, and array of users.
+
+# Enum
+- Numeric/String/Heterogeneous
+
+# Partial & Required
+
+# Narrow down types
 
 | **Type**          | **Description**                                                                                   | **Example**                                                                 |
 |--------------------|---------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -78,7 +121,10 @@ console.log(tax2); // Output: 30
 
 
 
+
 # Interface
+1. Declaration merging
+2. extend
 
 # Overloading
 ### **Exercise_1: Implement Contextual Function Overloading in TypeScript**
