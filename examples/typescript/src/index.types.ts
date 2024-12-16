@@ -29,7 +29,7 @@ type CompanyLocation = {
   street: number;
 };
 
-const company: number = {
+const company: Company = {
   name: "IBM",
   id: 124,
   cfo: "Naor",
