@@ -9,11 +9,11 @@
 
 ### **Exercise_1: Async await**
 #### Option_1
-Write a function that gets all the countries from the following api: 
+Write a function that gets all the countries from the following api: `http://localhost:2200/countries-elbit`
 
 - store all the countries names in array.
 - create an function that return each region and the number of countries inside.
-- create an function that filter all the countries that has more than 
+- create an function that filter all the countries that has more than "population":7275556
 
 Print the number of countries for each region
 
