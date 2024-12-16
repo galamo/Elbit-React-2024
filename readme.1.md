@@ -6,6 +6,9 @@
 2. promise
 3. async await
 
+
+## Ex 
+
 ### Typescript
 
 - `npm init -y` - create new module based on the folder name
