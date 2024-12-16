@@ -88,3 +88,17 @@ getUser(111);
 function getUser(userId: string | number) {
   return [];
 }
+
+function add(a: number, b: number): number;
+function add(a: Array<number>, b: Array<number>): number;
+function add(a: number | Array<number>, b: number | Array<number>): number {
+  if (typeof a === "number") {
+    console.log(a);
+  } else {
+    console.log(a);
+  }
+  return 1;
+}
+
+add(1, 3);
+add([33], [1]);

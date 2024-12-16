@@ -45,3 +45,14 @@ getUser(111);
 function getUser(userId) {
     return [];
 }
+function add(a, b) {
+    if (typeof a === "number") {
+        console.log(a);
+    }
+    else {
+        console.log(a);
+    }
+    return 1;
+}
+add(1, 3);
+add([33], [1]);
