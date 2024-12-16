@@ -8,15 +8,16 @@ function getPilotDataApi(type){
             }else{
                 reject("Type is not valid")
             }
-        }, 6000);
+        }, 1000);
     })
 }
 
-getPilotDataApi("F-35").then((dataFromPromise)=>{
+getPilotDataApi("F-16").then((dataFromPromise)=>{
     console.log(dataFromPromise)
 }).catch((error)=>{
     console.log(error)
 })
+
 
 
 console.log("Script end")
