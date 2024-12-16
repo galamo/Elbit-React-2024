@@ -17,3 +17,21 @@ const company = {
     cfo: "Naor",
     location: { city: "Givatayim", address: "arieal sharon", street: 4 },
 };
+console.log(company.cfo);
+const subscriber = {
+    password: "aa",
+    userName: "aa",
+    isAdmin: true,
+    company: Companies.Facebook,
+};
+const u = {
+    userName: "aa",
+    roles: "admin",
+    apartment: "",
+    salary: 100000,
+};
+senduserToApi(u);
+function senduserToApi(user) {
+    return user;
+}
+// const newSubscriber: Pick<Subscriber, "password"> & Superuser & User = {};
