@@ -6,9 +6,10 @@
 2. promise
 3. async await
 
-
 ### **Exercise_1: Async await**
+
 #### Option_1
+
 Write a function that gets all the countries from the following api: `http://localhost:2200/countries-elbit`
 
 - store all the countries names in array.
@@ -22,7 +23,9 @@ Print the number of countries for each region
 3. run `npm init -y`
 4. run `npm i axios`
 5. write your code.
+
 #### Option_2
+
 Write a function that gets all the users from the following api: `https://randomuser.me/api/?results=10`
 
 - store all the user names in array.
@@ -37,9 +40,6 @@ Print the number of countries for each region
 4. run `npm i axios`
 5. write your code.
 
-
-
-
 # Typescript
 
 - `npm init -y` - create new module based on the folder name
@@ -50,55 +50,58 @@ Print the number of countries for each region
 - configure useful scripts `watch mode`
 
 # Types
+
 - Example primitive types
 
-# Json Based Type
+# Json Based Type [x]
 
 ### **Exercise_1: Create a type based JSON**
+
 1. crate new type based on JSON - Users
-2. Create a Single User, and array of users.
+2. Create the following types: `SingleUser`, `ArrayOfUsers`.
 
 # Enum
+
 - Numeric/String/Heterogeneous
 
-# Partial & Required
+# Partial & Required [x]
 
-# Narrow down types
+# Narrow down types [x]
 
-| **Type**          | **Description**                                                                                   | **Example**                                                                 |
-|--------------------|---------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
-| `string`          | Represents text data.                                                                             | `let name: string = "John";`                                               |
-| `number`          | Represents numeric values (integer or float).                                                     | `let age: number = 25;`                                                    |
-| `boolean`         | Represents `true` or `false`.                                                                     | `let isActive: boolean = true;`                                            |
-| `null`            | Represents explicitly no value.                                                                   | `let empty: null = null;`                                                  |
-| `undefined`       | Represents uninitialized variables.                                                               | `let notAssigned: undefined;`                                              |
-| `bigint`          | Represents large integers.                                                                        | `let bigValue: bigint = 123456789n;`                                       |
-| `symbol`          | Represents unique values, often used as object keys.                                              | `let uniqueKey: symbol = Symbol("key");`                                   |
-| `object`          | Represents non-primitive values.                                                                  | `let person: object = { name: "John" };`                                   |
-| `array`           | Represents a list of values.                                                                      | `let nums: number[] = [1, 2, 3];`                                          |
-| `tuple`           | Represents a fixed-length array with specific types.                                              | `let tuple: [string, number] = ["Alice", 30];`                             |
-| `enum`            | Represents named constants.                                                                       | `enum Color { Red, Green }`                                                |
-| `any`             | Allows any type (type-checking disabled).                                                         | `let value: any = 42;`                                                     |
-| `unknown`         | Similar to `any`, but requires type-checking before usage.                                         | `let val: unknown = "test";`                                               |
-| `void`            | Represents no return value.                                                                       | `function log(): void {}`                                                  |
-| `never`           | Represents a value that never occurs (e.g., throwing errors).                                     | `function fail(): never { throw new Error(); }`                            |
-| `union`           | Allows multiple types.                                                                            | `let value: string | number;`                                             |
-| `intersection`    | Combines multiple types into one.                                                                 | `type A = { name: string } & { age: number };`                             |
-| `literal`         | Represents specific values.                                                                       | `let dir: "up" | "down";`                                                  |
-| `type alias`      | Defines custom types.                                                                             | `type ID = string | number;`                                              |
-| `interface`       | Describes object shapes.                                                                          | `interface User { name: string; }`                                         |
-| `class`           | Defines objects with constructors and methods.                                                    | `class Animal { name: string; }`                                           |
-| `function`        | Represents a function's type.                                                                     | `let fn: (x: number) => string;`                                           |
-| `readonly`        | Makes properties or arrays immutable.                                                             | `let arr: readonly number[] = [1, 2];`                                     |
-| `Record`          | Creates an object type with key-value pairs.                                                      | `let user: Record<string, number> = { a: 1 };`                             |
-| `Partial`         | Makes all properties optional.                                                                    | `let user: Partial<{ name: string }>;`                                     |
-| `Pick`            | Selects specific properties from a type.                                                          | `let user: Pick<User, "name"> = { name: "Alice" };`                        |
-| `Omit`            | Excludes specific properties from a type.                                                         | `let user: Omit<User, "age"> = { name: "Alice" };`                         |
-
+| **Type**       | **Description**                                               | **Example**                                         |
+| -------------- | ------------------------------------------------------------- | --------------------------------------------------- | -------- |
+| `string`       | Represents text data.                                         | `let name: string = "John";`                        |
+| `number`       | Represents numeric values (integer or float).                 | `let age: number = 25;`                             |
+| `boolean`      | Represents `true` or `false`.                                 | `let isActive: boolean = true;`                     |
+| `null`         | Represents explicitly no value.                               | `let empty: null = null;`                           |
+| `undefined`    | Represents uninitialized variables.                           | `let notAssigned: undefined;`                       |
+| `bigint`       | Represents large integers.                                    | `let bigValue: bigint = 123456789n;`                |
+| `symbol`       | Represents unique values, often used as object keys.          | `let uniqueKey: symbol = Symbol("key");`            |
+| `object`       | Represents non-primitive values.                              | `let person: object = { name: "John" };`            |
+| `array`        | Represents a list of values.                                  | `let nums: number[] = [1, 2, 3];`                   |
+| `tuple`        | Represents a fixed-length array with specific types.          | `let tuple: [string, number] = ["Alice", 30];`      |
+| `enum`         | Represents named constants.                                   | `enum Color { Red, Green }`                         |
+| `any`          | Allows any type (type-checking disabled).                     | `let value: any = 42;`                              |
+| `unknown`      | Similar to `any`, but requires type-checking before usage.    | `let val: unknown = "test";`                        |
+| `void`         | Represents no return value.                                   | `function log(): void {}`                           |
+| `never`        | Represents a value that never occurs (e.g., throwing errors). | `function fail(): never { throw new Error(); }`     |
+| `union`        | Allows multiple types.                                        | `let value: string                                  | number;` |
+| `intersection` | Combines multiple types into one.                             | `type A = { name: string } & { age: number };`      |
+| `literal`      | Represents specific values.                                   | `let dir: "up"                                      | "down";` |
+| `type alias`   | Defines custom types.                                         | `type ID = string                                   | number;` |
+| `interface`    | Describes object shapes.                                      | `interface User { name: string; }`                  |
+| `class`        | Defines objects with constructors and methods.                | `class Animal { name: string; }`                    |
+| `function`     | Represents a function's type.                                 | `let fn: (x: number) => string;`                    |
+| `readonly`     | Makes properties or arrays immutable.                         | `let arr: readonly number[] = [1, 2];`              |
+| `Record`       | Creates an object type with key-value pairs.                  | `let user: Record<string, number> = { a: 1 };`      |
+| `Partial`      | Makes all properties optional.                                | `let user: Partial<{ name: string }>;`              |
+| `Pick`         | Selects specific properties from a type.                      | `let user: Pick<User, "name"> = { name: "Alice" };` |
+| `Omit`         | Excludes specific properties from a type.                     | `let user: Omit<User, "age"> = { name: "Alice" };`  |
 
 ### **Exercise_1: Calculate Tax for a Given Price**
 
 #### **Objective:**
+
 Write a function that calculates the tax amount for a given price, handling both numeric and string price inputs.
 
 #### **Instructions:**
@@ -110,24 +113,24 @@ Write a function that calculates the tax amount for a given price, handling both
      - `tax`: A `number` representing the tax rate (e.g., `0.2` for 20% tax).
 
 #### **Example Usage:**
+
 ```typescript
 const tax1 = calculateTax({ price: 100, tax: 0.2 });
 console.log(tax1); // Output: 20
 
 const tax2 = calculateTax({ price: "$200", tax: 0.15 });
 console.log(tax2); // Output: 30
-
 ```
 
+# Interface [x]
 
-
-
-# Interface
 1. Declaration merging
 2. extend
 
 # Overloading
+
 ### **Exercise_1: Implement Contextual Function Overloading in TypeScript**
+
 - Use TypeScript's function overloading feature.
 
 Create a function that establishes a "connection" based on different input types. The function should demonstrate **function overloading** by handling two distinct input scenarios: one with `string` parameters and another with `number` parameters.
@@ -140,8 +143,6 @@ Create a function that establishes a "connection" based on different input types
    - A version that accepts two parameters: a `url` of type `string` and a `userIdPassword` of type `number`. This signature should also return a `Connection` object.
 3. Provide a single implementation for the function that handles both overloads, ensuring type safety.
 
-
-
 #### **Example Usage:**
 
 ```typescript
@@ -149,24 +150,26 @@ const connection1 = createConnection("https://example.com", "admin");
 const connection2 = createConnection("https://example.com", 456);
 ```
 
+### .d.ts file, type declaration [x]
 
-
-### .d.ts file, type declaration
 1. Support JS existing code with Types.
 2. import the lib.d.ts file to use the Types
 
-# String literal
+# String literal [x]
+
 ### **Exercise_1: Create a TypeScript Function for Day of the Week**
 
 Create a TypeScript type and a function to determine the day of the week for a given `Date`.
 
 #### **Instructions**:
+
 1. Define a type named `DayOfWeeks` that includes the days `"Sunday"`, `"Monday"`, etc..
 2. Write a function named `getDayFromDate` that:
    - Accepts a `Date` object as its argument.
    - Returns a value of type `DayOfWeeks`.
 
 #### **Example Usage**:
+
 ```typescript
 const date1 = new Date("2024-12-15"); // Sunday
 console.log(getDayFromDate(date1)); // Output: "Sunday"
@@ -175,7 +178,7 @@ const date2 = new Date("2024-12-16"); // Monday
 console.log(getDayFromDate(date2)); // Output: "Monday"
 ```
 
-# Generics
+# Generics [x]
 
 ```javascript
 A major part of software engineering is building components that not only have well-defined and consistent APIs, but are also reusable. Components that are capable of working on the data of today as well as the data of tomorrow will give you the most flexible capabilities for building up large software systems.
@@ -186,6 +189,7 @@ A major part of software engineering is building components that not only have w
  Thus, we can have a generic that checks whether a constraint is met, and return different types.
 
 ```
+
 ```typescript
 type StringFromType<T> = T extends string ? string : number;
 
@@ -194,7 +198,6 @@ type ten = StringFromType<10>; // never
 ```
 
 ```typescript
-
 function getSingleUser(users: Array<string>): string {
   return users[0];
 }
@@ -205,10 +208,10 @@ function getSingleProduct(products: Array<Product>): Product {
 function getSingleObject<T>(arr: Array<T>): T {
   return arr[0];
 }
-
 ```
 
 ### **Exercise_1: What should be instead the unknown type?**
+
 - Replace unknown with the relevant type
 - change the callback response type
 
@@ -279,5 +282,78 @@ export function requestUsers(callback: (response: UsersApiResponse) : void) {
 }
 
 ```
-### Generics full example
 
+### Generics full example [x]
+
+```typescript
+// Generics full example
+interface Video {
+  title: string;
+  creator: string;
+  resolution: string;
+}
+
+interface Song {
+  artist: string;
+  length: number;
+  name: string;
+  writer: string;
+}
+```
+
+### Zod - input validation library [x]
+
+- `npm install zod`
+
+```javascript
+import { z } from "zod";
+
+// creating a schema for strings
+const mySchema = z.string();
+
+// parsing
+mySchema.parse("tuna"); // => "tuna"
+mySchema.parse(12); // => throws ZodError
+
+// "safe" parsing (doesn't throw error if validation fails)
+mySchema.safeParse("tuna"); // => { success: true; data: "tuna" }
+mySchema.safeParse(12); // => { success: false; error: ZodError }
+
+const User = z.object({
+  url: z.string().min(8),
+  name: z.string(),
+  age: z.number().min(2).max(3).optional(),
+});
+
+type ZodBasedUser = z.infer<typeof User>;
+```
+
+## keyof [x]
+
+```typescript
+type ScanResult = {
+  numberOfVulnerabilities: number;
+  packages: Array<{ name: string; version: string; cve: string }>;
+  priorities: Array<string>;
+  id: string;
+  userScannerId: string;
+};
+const scanErrors: Array<ScanResult> = [
+  {
+    numberOfVulnerabilities: 1,
+    packages: [{ name: "fetch", version: "1.2.3", cve: "2024-1554-223" }],
+    priorities: ["high", "low"],
+    id: "id_1",
+    userScannerId: "2024_12_12",
+  },
+  {
+    numberOfVulnerabilities: 1,
+    packages: [{ name: "axios", version: "1.2.3", cve: "2024-1124-223" }],
+    priorities: ["high", "low"],
+    id: "id_2",
+    userScannerId: "2024_12_12",
+  },
+];
+```
+
+## More TS Content
