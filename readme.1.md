@@ -60,11 +60,56 @@ Print the number of countries for each region
 1. crate new type based on JSON - Users
 2. Create the following types: `SingleUser`, `ArrayOfUsers`.
 
+```json
+{
+  "gender": "female",
+  "name": { "title": "Madame", "first": "Anja", "last": "Clement" },
+  "location": {
+    "street": { "number": 4446, "name": "Place du 8 Novembre 1942" },
+    "city": "Finhaut",
+    "state": "Fribourg",
+    "country": "Switzerland",
+    "postcode": 1085,
+    "coordinates": { "latitude": "-55.9946", "longitude": "128.8545" },
+    "timezone": {
+      "offset": "-7:00",
+      "description": "Mountain Time (US & Canada)"
+    }
+  },
+  "email": "anja.clement@example.com",
+  "login": {
+    "uuid": "12627444-beb5-476a-8a01-23e03d0d20b6",
+    "username": "bigdog278",
+    "password": "1717",
+    "salt": "3QvCBOUN",
+    "md5": "5500614dbca048fd18b5e495e49513e4",
+    "sha1": "2243e09b485fcd46225e3c3fffefcb8f94ed2960",
+    "sha256": "ba3932e0430a2ed3046818433846c227a2e5d43b6fed8e53247cb5587954efc0"
+  },
+  "dob": { "date": "1996-04-04T22:39:20.516Z", "age": 28 },
+  "registered": { "date": "2002-12-17T22:50:47.806Z", "age": 21 },
+  "phone": "079 107 43 71",
+  "cell": "077 691 98 67",
+  "id": { "name": "AVS", "value": "756.6321.6815.85" },
+  "picture": {
+    "large": "https://randomuser.me/api/portraits/women/23.jpg",
+    "medium": "https://randomuser.me/api/portraits/med/women/23.jpg",
+    "thumbnail": "https://randomuser.me/api/portraits/thumb/women/23.jpg"
+  },
+  "nat": "CH"
+}
+```
+
 # Enum
 
 - Numeric/String/Heterogeneous
 
 # Partial & Required [x]
+
+# Interface [x]
+
+1. Declaration merging
+2. extend
 
 # Narrow down types [x]
 
@@ -121,11 +166,6 @@ console.log(tax1); // Output: 20
 const tax2 = calculateTax({ price: "$200", tax: 0.15 });
 console.log(tax2); // Output: 30
 ```
-
-# Interface [x]
-
-1. Declaration merging
-2. extend
 
 # Overloading
 
@@ -210,7 +250,7 @@ function getSingleObject<T>(arr: Array<T>): T {
 }
 ```
 
-### **Exercise_1: What should be instead the unknown type?**
+### **Exercise_1: What should be instead the unknown,AdminsApiResponse,UsersApiResponse type? & **
 
 - Replace unknown with the relevant type
 - change the callback response type
@@ -299,6 +339,38 @@ interface Song {
   name: string;
   writer: string;
 }
+
+class PlayList<T> {
+  private list: T[] = [];
+  add(someElement: T) {
+    this.list.push(someElement);
+  }
+  play(item: T) {
+    this.list.splice(0, 1);
+  }
+}
+
+const songs = new PlayList<Song>();
+songs.add({
+  artist: "veronica",
+  length: 12,
+  name: "silence and flame",
+  writer: "Adle",
+});
+```
+
+```typescript
+// A generic function where T must have a 'name' property
+function greet<T extends { name: string }>(person: T): string {
+  return `Hello, ${person.name}!`;
+}
+const user = { name: "Alice", age: 25 };
+console.log(greet(user));
+
+const company = { name: "TechCorp", employees: 100 };
+console.log(greet(company));
+
+const invalidUser = { age: 30 };
 ```
 
 ### Zod - input validation library [x]
@@ -328,7 +400,7 @@ const User = z.object({
 type ZodBasedUser = z.infer<typeof User>;
 ```
 
-## keyof [x]
+# keyof [x]
 
 ```typescript
 type ScanResult = {
@@ -356,4 +428,16 @@ const scanErrors: Array<ScanResult> = [
 ];
 ```
 
-## More TS Content
+### **Exercise_1: keyof Type and Functionality**
+
+use `type ScanResult` that represents the results of a vulnerability scan & implement a function named `getScanResultStats` that can retrieve any property of the ScanResult object dynamically using a keyof constraint.
+
+Implement the function getScanResultStats that:
+
+Accepts a ScanResult object & key of the ScanResult type.
+Returns the value of the specified key.
+
+Implement a function named `filterScans` that filters an array of ScanResult objects based on a specified key-value pair.
+
+Accepts a ScanResult Array, key of the ScanResult type & value.
+Returns the requested filtered array..
