@@ -11,3 +11,13 @@ const carInstance: Car2 = {
   color: "string",
   doors: 4,
 };
+
+type DaysOfWeeks = "Sunday" | "Monday" | "Friday";
+
+function getDayFromDate(date: Date): DaysOfWeeks | undefined {
+  if (typeof date?.getDay !== "function") return;
+  if (date.getDay() === 0) return "Sunday";
+  if (date.getDay() === 1) return "Monday";
+  return "Friday";
+}
+getDayFromDate(new Date());

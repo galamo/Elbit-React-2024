@@ -1,8 +1,15 @@
-interface Product {
+interface ProductFromLib {
   title: string;
   price: number;
   id: number;
   category: string; // change it in a while.
+}
+// interface SuperMarketProduct extends ProductFromLib {
+//   expirationDate: Date;
+// }
+
+interface ProductFromLib {
+  expirationDate: Date;
 }
 
 // Type Decleration

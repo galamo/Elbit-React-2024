@@ -104,9 +104,9 @@ Print the number of countries for each region
 
 - Numeric/String/Heterogeneous
 
-# Partial & Required [x]
+# Partial & Required
 
-# Interface [x]
+# Interface
 
 1. Declaration merging
 2. extend
@@ -195,7 +195,7 @@ const connection2 = createConnection("https://example.com", 456);
 1. Support JS existing code with Types.
 2. import the lib.d.ts file to use the Types
 
-# String literal [x]
+# String literal
 
 ### **Exercise_1: Create a TypeScript Function for Day of the Week**
 
