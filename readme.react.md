@@ -42,9 +42,7 @@ export default App;
 
 ### Exercise:
 
-- Create Client Application - react-client-app.
-
----
+- Create Client Application name: react-client-app.
 
 ## 3. JSX (JavaScript XML)
 
