@@ -1,3 +1,8 @@
+//  import statement
+import { A1, A2 } from "./interfacesFolder";
+import getProductsForSuperMarket from "./interface";
+
+console.log(getProductsForSuperMarket());
 enum Companies {
   IBM = 1,
   Elbit,

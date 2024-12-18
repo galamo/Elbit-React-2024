@@ -1,4 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const interface_1 = __importDefault(require("./interface"));
+console.log((0, interface_1.default)());
 var Companies;
 (function (Companies) {
     Companies[Companies["IBM"] = 1] = "IBM";

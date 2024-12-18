@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.nameSpace = void 0;
-exports.default = getProduct;
+exports.user = void 0;
+exports.getProduct = getProduct;
 // Type Decleration
 //  export statements
 function getProduct() {
@@ -14,6 +14,5 @@ function getProduct() {
     };
 }
 const user = 1;
-const nameSpace = { UserNameSpace: user };
-exports.nameSpace = nameSpace;
+exports.user = user;
 //Extend

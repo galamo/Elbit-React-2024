@@ -53,7 +53,7 @@ Print the number of countries for each region
 
 - Example primitive types
 
-# Json Based Type [x]
+# Json Based Type
 
 ### **Exercise_1: Create a type based JSON**
 

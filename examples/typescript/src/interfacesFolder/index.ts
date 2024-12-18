@@ -1,3 +1,6 @@
+import { A as A1 } from "./typeA";
+import { A as A2 } from "./typeB";
+
 interface ProductFromLib {
   title: string;
   price: number;
@@ -15,7 +18,7 @@ interface ProductFromLib {
 // Type Decleration
 //  export statements
 
-export default function getProduct(): ProductFromLib {
+export function getProduct(): ProductFromLib {
   return {
     title: "Coffee",
     price: 2,
@@ -25,7 +28,6 @@ export default function getProduct(): ProductFromLib {
   };
 }
 const user = 1;
-const nameSpace = { UserNameSpace: user };
-export { nameSpace };
+export { user, A1, A2 };
 
 //Extend
