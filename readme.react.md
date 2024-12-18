@@ -81,7 +81,8 @@ export default Welcome;
 
 ### Exercise:
 
-- Create functional component that shows Your
+- Create functional component that describe a Developer Task.
+- Task: title, created at, domain ( development, documentation, design)
 
 ## 5. Props
 
@@ -93,7 +94,6 @@ Props (short for properties) allow you to pass data to components.
 function Welcome(props) {
   return <h1>Hello, {props.name}!</h1>;
 }
-
 function App() {
   return <Welcome name="Alice" />;
 }
@@ -101,9 +101,8 @@ function App() {
 
 ### Exercise:
 
-- Create a `UserCard` component that takes `name` and `age` as props and displays them.
-
----
+- Create functional component that describe a Developer Task.
+- Task: title, created at, domain ( development, documentation, design)
 
 ## 6. State and Hooks
 
