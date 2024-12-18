@@ -16,3 +16,4 @@ function getCountry() {
         return data;
     });
 }
+// type Countries = Country[];

@@ -7,3 +7,6 @@ async function getCountry(): Promise<Country> {
   const data = await result.json();
   return data;
 }
+
+type Countries = Array<Country>;
+// type Countries = Country[];

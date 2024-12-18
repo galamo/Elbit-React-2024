@@ -400,7 +400,7 @@ const User = z.object({
 type ZodBasedUser = z.infer<typeof User>;
 ```
 
-# keyof [x]
+# keyof
 
 ```typescript
 type ScanResult = {
