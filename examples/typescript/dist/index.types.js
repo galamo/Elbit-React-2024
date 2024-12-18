@@ -6,8 +6,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const interface_1 = __importDefault(require("./interface"));
 const zod_1 = require("./zod");
 console.log("zod validation");
+const zod_2 = require("./zod");
 // const result = UserScehma.safeParse({ url: "|", name: "aa", age: 20 });
 // console.log(result.error?.issues);
+(0, zod_2.initZod)();
 const user = {
     name: "",
     url: "",
