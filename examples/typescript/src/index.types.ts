@@ -1,6 +1,23 @@
 //  import statement
 import { A1, A2 } from "./interfacesFolder";
 import getProductsForSuperMarket from "./interface";
+import { UserScehma, ZodBasedUser } from "./zod";
+console.log("zod validation");
+// const result = UserScehma.safeParse({ url: "|", name: "aa", age: 20 });
+// console.log(result.error?.issues);
+
+const user: ZodBasedUser = {
+  name: "",
+  url: "",
+  age: 20,
+};
+
+function saveUser(u: ZodBasedUser) {
+  const result = UserScehma.safeParse(u);
+  console.log(result.error);
+  console.log(result);
+}
+saveUser({ name: "aaaa", url: "aaaaaaaaaaaaaa", age: 2 });
 
 console.log(getProductsForSuperMarket());
 enum Companies {

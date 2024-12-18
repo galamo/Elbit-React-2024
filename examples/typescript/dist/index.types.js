@@ -4,6 +4,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const interface_1 = __importDefault(require("./interface"));
+const zod_1 = require("./zod");
+console.log("zod validation");
+// const result = UserScehma.safeParse({ url: "|", name: "aa", age: 20 });
+// console.log(result.error?.issues);
+const user = {
+    name: "",
+    url: "",
+    age: 20,
+};
+function saveUser(u) {
+    const result = zod_1.UserScehma.safeParse(u);
+    console.log(result.error);
+    console.log(result);
+}
+saveUser({ name: "aaaa", url: "aaaaaaaaaaaaaa", age: 2 });
 console.log((0, interface_1.default)());
 var Companies;
 (function (Companies) {
