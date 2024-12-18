@@ -15,5 +15,16 @@ const scanErrors = [
         userScannerId: "2024_12_12",
     },
 ];
-function searchScan(data, key) { }
-searchScan(scanErrors, "packages");
+function searchScan(data, key, value) {
+    if (!Array.isArray(data))
+        return;
+    return data.filter((singleItem) => {
+        if (typeof value === "number") {
+            return singleItem[key] === value;
+        }
+        else {
+            return singleItem[key].toLowerCase() === value.toLowerCase();
+        }
+    });
+}
+searchScan(scanErrors, "userScannerId", "aa");

@@ -22,7 +22,20 @@ const scanErrors: Array<ScanResult> = [
   },
 ];
 
-type ScanResultKey = keyof Omit<ScanResult, "priorities">;
+type ScanResultKey = keyof Omit<ScanResult, "priorities" | "packages">;
 
-function searchScan(data: Array<ScanResult>, key: ScanResultKey) {}
-searchScan(scanErrors, "packages");
+function searchScan(
+  data: Array<ScanResult>,
+  key: ScanResultKey,
+  value: string | number
+): Array<ScanResult> | undefined {
+  if (!Array.isArray(data)) return;
+  return data.filter((singleItem: ScanResult) => {
+    if (typeof value === "number") {
+      return singleItem[key] === value;
+    } else {
+      return (singleItem[key] as string).toLowerCase() === value.toLowerCase();
+    }
+  });
+}
+searchScan(scanErrors, "userScannerId", "aa");
