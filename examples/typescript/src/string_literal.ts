@@ -21,3 +21,5 @@ function getDayFromDate(date: Date): DaysOfWeeks | undefined {
   return "Friday";
 }
 getDayFromDate(new Date());
+
+type StringFromType<T> = T extends string ? string : number;

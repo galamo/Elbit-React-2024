@@ -190,7 +190,7 @@ const connection1 = createConnection("https://example.com", "admin");
 const connection2 = createConnection("https://example.com", 456);
 ```
 
-### .d.ts file, type declaration [x]
+### .d.ts file, type declaration
 
 1. Support JS existing code with Types.
 2. import the lib.d.ts file to use the Types
@@ -234,7 +234,7 @@ A major part of software engineering is building components that not only have w
 type StringFromType<T> = T extends string ? string : number;
 
 type lorem = StringFromType<"lorem ipsum">; // 'string'
-type ten = StringFromType<10>; // never
+type ten = StringFromType<10>;
 ```
 
 ```typescript
@@ -367,7 +367,7 @@ function greet<T extends { name: string }>(person: T): string {
 const user = { name: "Alice", age: 25 };
 console.log(greet(user));
 
-const company = { name: "TechCorp", employees: 100 };
+const company = { name: "Elbit", employees: 100 };
 console.log(greet(company));
 
 const invalidUser = { age: 30 };
