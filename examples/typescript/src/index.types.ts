@@ -10,7 +10,7 @@ enum Companies {
   Facebook,
 }
 
-type User = {
+export type User = {
   userName: string;
   company: Companies;
 };
