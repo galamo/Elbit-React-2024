@@ -7,7 +7,7 @@ var jwt = require("jsonwebtoken");
 const axios = require("axios");
 const bodyParser = require("body-parser");
 NODE_TLS_REJECT_UNAUTHORIZED = 0;
-const data = require("./data/index.json")
+const data = require("./data/index.json");
 
 const app = express();
 app.use(cors());
@@ -25,10 +25,8 @@ app.get("/employees", async (req, res, next) => {
 });
 
 app.get("/countries-elbit", async (req, res, next) => {
- 
   res.json(data);
 });
-
 
 app.get("/health-check", (req, res, next) => {
   res.json({ message: "Api v2 is ready" });
@@ -44,7 +42,7 @@ app.get("/users", async (req, res, next) => {
 
 app.get("/countries-delay", async (req, res, next) => {
   try {
-    const { data } = await axios.get("https://restcountries.com/v3.1/all");
+    // const { data } = await axios.get("https://restcountries.com/v3.1/all");
     setTimeout(() => {
       return res.json({ data });
     }, 4000);
@@ -55,7 +53,7 @@ app.get("/countries-delay", async (req, res, next) => {
 
 app.get("/countries", async (req, res, next) => {
   try {
-    const { data } = await axios.get("https://restcountries.com/v3.1/all");
+    // const { data } = await axios.get("https://restcountries.com/v3.1/all");
     return res.json({ data });
   } catch (error) {
     return next(error);
@@ -66,15 +64,24 @@ app.get("/countries-delay/name/:name", async (req, res, next) => {
   delayName++;
 
   try {
-    const { data } = await axios.get(
-      `https://restcountries.com/v3.1/name/${req.params.name}`
-    );
+    console.log(req?.params?.name);
+    const result = data.filter((item) => {
+      console.log(
+        item?.name?.common?.includes(req?.params?.name?.toLowerCase())
+      );
+      return item?.name?.common
+        ?.toLowerCase()
+        ?.includes(req?.params?.name?.toLowerCase());
+    });
+    // const { data } = await axios.get(
+    //   `https://restcountries.com/v3.1/name/${req.params.name}`
+    // );
     if (delayName % 2 === 0) {
       setTimeout(() => {
-        return res.json({ data });
+        return res.json({ result });
       }, 6000);
     } else {
-      return res.json({ data });
+      return res.json({ result });
     }
   } catch (error) {
     return next(error);
