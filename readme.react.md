@@ -63,8 +63,6 @@ export default App;
 
 - Render a JSX elements that displays your Identity, Email, First name, last name, Address.
 
----
-
 ## 4. Components
 
 Components are the building blocks of React. You can create functional or class-based components.
