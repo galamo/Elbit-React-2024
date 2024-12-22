@@ -4,7 +4,7 @@ import data from "./index.json";
 import SingleCountry from "./singleCountry";
 import css from "./index.module.css";
 import Header from "../../ui/header";
-import { CircularProgress, Skeleton, TextField } from "@mui/material";
+import { Badge, CircularProgress, Skeleton, TextField } from "@mui/material";
 
 const URL_ALL = "http://localhost:2200/countries-delay";
 const URL_NAME = "http://localhost:2200/countries-delay/name/";
@@ -13,13 +13,20 @@ export type CountryApi = (typeof data)[0];
 export default function CountriesPage() {
   const [countries, setCountries] = useState<CountryApi[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [countryName, setCountryName] = useState<string>("");
+
   useEffect(() => {
+    let isSubscribed = true;
     async function getCountries() {
       try {
         setIsLoading(true);
-        const result = await axios.get<CountryApi[]>(URL_ALL);
+        const url = countryName ? `${URL_NAME}${countryName}` : URL_ALL;
+        const result = await axios.get<CountryApi[]>(url);
         const { data } = result;
-        setCountries(data?.data);
+        console.log(data);
+        if (isSubscribed) {
+          setCountries(data?.data || data?.result);
+        }
       } catch (error) {
         console.log(error);
         alert("Something went wrong!");
@@ -28,7 +35,18 @@ export default function CountriesPage() {
       }
     }
     getCountries();
-  }, []);
+    return () => {
+      console.log(isSubscribed, countryName);
+      isSubscribed = false;
+    };
+  }, [countryName]);
+
+  function handleSearch(
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    console.log(`countryName: ${event.target.value}`);
+    setCountryName(event.target.value);
+  }
 
   return (
     <div>
@@ -40,7 +58,10 @@ export default function CountriesPage() {
           id="outlined-basic"
           label="Country Name"
           variant="outlined"
+          onChange={handleSearch}
         />
+        <Badge badgeContent={countries.length} color="primary"></Badge>
+        {isLoading ? <CircularProgress /> : null}
       </div>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
         {isLoading ? <DummySkeletonCountries /> : null}
