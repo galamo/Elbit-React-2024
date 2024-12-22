@@ -1,26 +1,13 @@
-import { Button, Slider, TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 // import "./App.css";
-import ButtonApp from "./components/ui/button-app";
-import CardApp from "./components/ui/card-app";
-import Header from "./components/ui/header";
-import GlobalCSS from "./components/ui/testGlobalCss";
+import CountriesPage from "./components/pages/countriesPage";
 
 function App() {
   return (
     <>
-      <CardApp />
-      <CardApp />
-      <CardApp />
-      <CardApp />
-      <LoginSection />
-
-      <Header title={"App header"} color={"red"} />
-      <Header title={"Statistics Header"} color={"green"} />
-      <Header title={"About"} color={"BLUE"} />
-      <h1 className="new-h1"> Test CSS ? </h1>
-      <GlobalCSS />
-      <ButtonApp />
-      <ButtonApp theme="LIGHT" />
+      <div>
+        <CountriesPage />
+      </div>
     </>
   );
 }
