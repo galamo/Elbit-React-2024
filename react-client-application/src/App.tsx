@@ -1,4 +1,5 @@
 import "./App.css";
+import { ButtonAppsExamples } from "./components/ui/button";
 import Header from "./components/ui/header";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
       <Header title={"App header"} color={"red"} />
       <Header title={"Statistics Header"} color={"green"} />
       <Header title={"About"} color={"BLUE"} />
+      <ButtonAppsExamples />
     </>
   );
 }
