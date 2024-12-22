@@ -1,11 +1,13 @@
 import { Button, TextField } from "@mui/material";
 // import "./App.css";
 import CountriesPage from "./components/pages/countriesPage";
+import RegistrationPage from "./components/pages/registerPage";
 
 function App() {
   return (
     <>
       <div>
+        <RegistrationPage />
         <CountriesPage />
       </div>
     </>
