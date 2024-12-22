@@ -1,9 +1,9 @@
 import axios from "axios";
-
+import Swal from "sweetalert2";
 import css from "./index.module.css";
 import Header from "../../ui/header";
-import { Button, CircularProgress, Skeleton, TextField } from "@mui/material";
-import { ChangeEvent, useState } from "react";
+import { Button, CircularProgress, TextField } from "@mui/material";
+import { ChangeEvent, useRef, useState } from "react";
 
 const REGISTER_URL = "http://localhost:2200/auth/register";
 
@@ -12,15 +12,22 @@ export default function RegistrationPage() {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const userNameRef = useRef<HTMLInputElement>(null);
+
+  console.log("RegistrationPage render...");
   async function registerAction() {
     try {
       setIsLoading(true);
+      console.log("useRef -> Value in phone:", userNameRef?.current?.value);
       const result = await axios.post(REGISTER_URL, {
         userName: userName,
         password: password,
       });
       const { data } = result;
-      console.log(data);
+      Swal.fire({
+        title: "Success!",
+        icon: "success",
+      });
     } catch (error) {
       console.log(error);
       alert("Something went wrong!");
@@ -35,6 +42,14 @@ export default function RegistrationPage() {
         <Header title={"Registration"} color={"Blue"} />
       </div>
       <div>
+        phone{" "}
+        <TextField
+          id="outlined-basic"
+          label="phone"
+          variant="outlined"
+          inputRef={userNameRef}
+          // ref={userNameRef}
+        />
         <TextField
           onChange={(event: ChangeEvent<HTMLInputElement>) => {
             setUserName(event.target.value);
