@@ -54,15 +54,27 @@ export default function CardApp() {
 
         <img height={150} width={150} src={url} />
       </CardContent>
-
       <CardActions>
-        <Button size="small">Like</Button>
-        <LikeSection numberOfLikes={100} />
+        <LikeSection />
       </CardActions>
     </Card>
   );
 }
 
-function LikeSection(props: { numberOfLikes: number }) {
-  return <div>👍 {props.numberOfLikes}</div>;
+function LikeSection() {
+  console.log("Like section render");
+  const [likes, setLikes] = useState(0);
+  return (
+    <div>
+      <Button
+        onClick={() => {
+          setLikes(likes + 1);
+        }}
+        size="small"
+      >
+        Like
+      </Button>
+      👍 {likes}
+    </div>
+  );
 }

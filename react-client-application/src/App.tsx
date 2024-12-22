@@ -9,6 +9,9 @@ function App() {
   return (
     <>
       <CardApp />
+      <CardApp />
+      <CardApp />
+      <CardApp />
       <LoginSection />
 
       <Header title={"App header"} color={"red"} />
