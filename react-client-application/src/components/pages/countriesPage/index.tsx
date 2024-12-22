@@ -4,6 +4,7 @@ import data from "./index.json";
 import SingleCountry from "./singleCountry";
 import css from "./index.module.css";
 import Header from "../../ui/header";
+import debounce from "lodash/debounce";
 import { Badge, CircularProgress, Skeleton, TextField } from "@mui/material";
 
 const URL_ALL = "http://localhost:2200/countries-delay";
@@ -48,6 +49,8 @@ export default function CountriesPage() {
     setCountryName(event.target.value);
   }
 
+  const handleSearchDebounce = debounce(handleSearch, 400);
+
   return (
     <div>
       <div className={css.headerCenter}>
@@ -58,7 +61,7 @@ export default function CountriesPage() {
           id="outlined-basic"
           label="Country Name"
           variant="outlined"
-          onChange={handleSearch}
+          onChange={handleSearchDebounce}
         />
         <Badge badgeContent={countries.length} color="primary"></Badge>
         {isLoading ? <CircularProgress /> : null}
@@ -66,7 +69,7 @@ export default function CountriesPage() {
       <div style={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
         {isLoading ? <DummySkeletonCountries /> : null}
         {countries.map((c) => {
-          return <SingleCountry {...c} />;
+          return <SingleCountry key={c?.cca3} {...c} />;
         })}
       </div>
     </div>
@@ -76,7 +79,9 @@ export default function CountriesPage() {
 function DummySkeletonCountries() {
   const skeletons = [];
   for (let index = 0; index < 8; index++) {
-    skeletons.push(<Skeleton variant="rectangular" width={300} height={500} />);
+    skeletons.push(
+      <Skeleton key={index} variant="rectangular" width={300} height={500} />
+    );
   }
   return skeletons;
 }

@@ -5,6 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { CountryApi } from "..";
+import { LikeSection } from "../../../ui/card-app";
 
 const bull = (
   <Box
@@ -37,6 +38,7 @@ export default function SingleCountry(props: CountryApi) {
       </CardContent>
       <CardActions>
         <Button size="small">Learn More</Button>
+        <LikeSection />
       </CardActions>
     </Card>
   );
