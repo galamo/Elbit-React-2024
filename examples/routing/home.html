@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Home</h1>
+    <button onclick="increaseCounter()">increase counter</button>
+    <h2 id="value">0</h2>
+    <a href="./about.html"> Go to About </a>
+    <a href="./index.html"> Go to index </a>
+    <script>
+      let n = 0;
+      function increaseCounter() {
+        const element = document.getElementById("value");
+        element.innerText = n + 1;
+        n++;
+      }
+    </script>
+  </body>
+</html>
