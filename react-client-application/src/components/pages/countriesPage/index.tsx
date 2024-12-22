@@ -4,7 +4,7 @@ import data from "./index.json";
 import SingleCountry from "./singleCountry";
 import css from "./index.module.css";
 import Header from "../../ui/header";
-import { CircularProgress, Skeleton } from "@mui/material";
+import { CircularProgress, Skeleton, TextField } from "@mui/material";
 
 const URL_ALL = "http://localhost:2200/countries-delay";
 const URL_NAME = "http://localhost:2200/countries-delay/name/";
@@ -36,7 +36,11 @@ export default function CountriesPage() {
         <Header title={"Countries"} color={"Blue"} />
       </div>
       <div>
-        
+        <TextField
+          id="outlined-basic"
+          label="Country Name"
+          variant="outlined"
+        />
       </div>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
         {isLoading ? <DummySkeletonCountries /> : null}
