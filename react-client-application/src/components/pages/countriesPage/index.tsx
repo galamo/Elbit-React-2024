@@ -6,7 +6,9 @@ import css from "./index.module.css";
 import Header from "../../ui/header";
 import { CircularProgress, Skeleton } from "@mui/material";
 
-const URL = "http://localhost:2200/countries-delay";
+const URL_ALL = "http://localhost:2200/countries-delay";
+const URL_NAME = "http://localhost:2200/countries-delay/name/";
+
 export type CountryApi = (typeof data)[0];
 export default function CountriesPage() {
   const [countries, setCountries] = useState<CountryApi[]>([]);
@@ -15,7 +17,7 @@ export default function CountriesPage() {
     async function getCountries() {
       try {
         setIsLoading(true);
-        const result = await axios.get<CountryApi[]>(URL);
+        const result = await axios.get<CountryApi[]>(URL_ALL);
         const { data } = result;
         setCountries(data?.data);
       } catch (error) {
@@ -32,6 +34,9 @@ export default function CountriesPage() {
     <div>
       <div className={css.headerCenter}>
         <Header title={"Countries"} color={"Blue"} />
+      </div>
+      <div>
+        
       </div>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 2 }}>
         {isLoading ? <DummySkeletonCountries /> : null}
