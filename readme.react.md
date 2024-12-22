@@ -100,7 +100,7 @@ function App() {
 ### Exercise:
 
 - Create functional component that describe a Developer Task.
-- Task: title, created at, domain ( development, documentation, design)
+- Task: title - h1, created at - h3, domain (development, documentation, design)
 
 ## 6. State and Hooks
 
@@ -190,8 +190,6 @@ function List() {
 ### Exercise:
 
 - Display a list of your favorite movies in React.
-
----
 
 ## 10. Forms
 
@@ -653,7 +651,373 @@ function App() {
 }
 ```
 
+## Design / component
+
 ### Material UI
 
 `npm install @mui/material @emotion/react @emotion/styled`
 `npm install @mui/icons-material`
+
+Here’s how the information can be formatted into a clean, professional README file:
+
+---
+
+# Styling Components in React: A Guide
+
+This guide explores various approaches to styling components in React, helping you choose the best option for your project.
+
+---
+
+## Table of Contents
+
+1. [CSS Modules](#1-css-modules)
+2. [Styled Components (CSS-in-JS)](#2-styled-components-css-in-js)
+3. [CSS Frameworks (e.g., Tailwind CSS)](#3-css-frameworks-eg-tailwind-css)
+4. [CSS-in-JS Libraries (Emotion, Stitches, etc.)](#4-css-in-js-libraries-emotion-stitches-etc)
+5. [Inline Styles](#5-inline-styles)
+6. [Global Styles or Theme Providers](#6-global-styles-or-theme-providers)
+7. [Preprocessors (Sass, Less)](#7-preprocessors-sass-less)
+8. [Choosing the Best Approach](#choosing-the-best-approach)
+
+---
+
+## 1. CSS Modules
+
+CSS Modules scope styles to specific components, avoiding global namespace collisions.
+
+### Example:
+
+**Button.module.css**
+
+```css
+.button {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+```
+
+**Button.jsx**
+
+```javascript
+import styles from "./Button.module.css";
+
+const Button = () => <button className={styles.button}>Click Me</button>;
+```
+
+### Pros:
+
+- No global namespace conflicts.
+- Works with existing CSS.
+- Easy integration with CRA and Vite.
+
+### Cons:
+
+- Requires a build step.
+- Limited dynamic styling.
+
+---
+
+## 2. Styled Components (CSS-in-JS)
+
+Styled Components use tagged template literals for component-level styling.
+
+### Example:
+
+```javascript
+import styled from "styled-components";
+
+const Button = styled.button`
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: darkblue;
+  }
+`;
+
+const App = () => <Button>Click Me</Button>;
+```
+
+### Pros:
+
+- Fully scoped styles.
+- Supports dynamic styling and theming.
+- Great developer experience with auto-completion.
+
+### Cons:
+
+- Runtime overhead.
+- Larger bundle size.
+
+---
+
+## 3. CSS Frameworks (e.g., Tailwind CSS)
+
+Utility-first frameworks like Tailwind CSS enable rapid development with pre-defined classes.
+
+### Example:
+
+```javascript
+const Button = () => (
+  <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
+    Click Me
+  </button>
+);
+```
+
+### Pros:
+
+- Fast prototyping.
+- Highly customizable.
+- Small CSS bundle with purging unused styles.
+
+### Cons:
+
+- JSX can get cluttered.
+- Requires learning utility class names.
+
+---
+
+## 4. CSS-in-JS Libraries (Emotion, Stitches, etc.)
+
+Emotion and similar libraries offer CSS-in-JS features like Styled Components but focus on performance or ergonomics.
+
+### Example (Emotion):
+
+```javascript
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
+
+const buttonStyle = css`
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: darkblue;
+  }
+`;
+
+const Button = () => <button css={buttonStyle}>Click Me</button>;
+```
+
+---
+
+## 5. Inline Styles
+
+Inline styles are simple and dynamic but lack advanced CSS features.
+
+### Example:
+
+```javascript
+const Button = () => (
+  <button
+    style={{
+      backgroundColor: "blue",
+      color: "white",
+      padding: "10px",
+      border: "none",
+      borderRadius: "5px",
+    }}
+  >
+    Click Me
+  </button>
+);
+```
+
+### Pros:
+
+- No external files needed.
+- Easy to use for dynamic styles.
+
+### Cons:
+
+- No pseudo-classes (`:hover`, `:focus`).
+- Lacks advanced CSS features like media queries.
+
+---
+
+## 6. Global Styles or Theme Providers
+
+Global styles and theme providers are ideal for managing shared styles.
+
+### Example:
+
+```javascript
+import { ThemeProvider, createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+`;
+
+const theme = {
+  colors: {
+    primary: "blue",
+  },
+};
+
+const App = () => (
+  <ThemeProvider theme={theme}>
+    <GlobalStyle />
+    <button style={{ color: theme.colors.primary }}>Themed Button</button>
+  </ThemeProvider>
+);
+```
+
+## Choosing the Best Approach
+
+| Use Case                             | Recommended Method           |
+| ------------------------------------ | ---------------------------- |
+| Small Projects                       | CSS Modules or Inline Styles |
+| Component Libraries / Design Systems | Styled Components or Emotion |
+| Fast Prototyping                     | Tailwind CSS                 |
+| Complex Apps with Theming            | Styled Components or Emotion |
+| Team Preferences                     | Align with team familiarity  |
+
+---
+
+# Styled Components Exercise
+
+install dependencies
+
+```cmd
+npm install styled-components
+npm install --save-dev @types/styled-components
+```
+
+### README: Styling Components Exercise
+
+---
+
+## Exercises: Styling in React
+
+This README provides two short exercises to help you practice **Styled Components** and **CSS Modules** in React.
+
+---
+
+### Exercise 1: Styled Components - Create a Card Component
+
+#### Objective
+
+Design a **Card Component** using Styled Components with dynamic styles passed as props.
+
+#### Requirements
+
+1. Create a `Card` component that displays:
+   - A title.
+   - A description.
+   - A customizable background color.
+   - Image - optional
+2. Use Styled Components to style the `Card`.
+3. Pass `bgColor` as a prop to dynamically set the background color.
+
+#### Output
+
+You will see three cards, each with a different background color.
+
+---
+
+### Exercise 2: CSS Modules - Create a Button Component
+
+#### Objective
+
+Design a reusable **Button Component** using **CSS Modules** with scoped styles.
+
+#### Requirements
+
+1. Create a `Button` component styled using CSS Modules.
+2. Include styles for:
+   - Default state.
+   - Hover state.
+   - Active state.
+3. Pass a `variant` prop to dynamically apply a different style.
+
+#### Instructions
+
+1. **Set Up CSS Modules**:
+   Ensure your React project supports CSS Modules (e.g., CRA supports `.module.css` files by default).
+
+2. **Create the CSS Module File**:
+   **`Button.module.css`**
+
+   ```css
+   .button {
+     background-color: blue;
+     color: white;
+     padding: 10px 20px;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     transition: background-color 0.3s;
+   }
+
+   .button:hover {
+     background-color: darkblue;
+   }
+
+   .button:active {
+     background-color: navy;
+   }
+
+   .secondary {
+     background-color: gray;
+   }
+   ```
+
+3. **Create the Button Component**:
+   **`Button.tsx`**
+
+   ```tsx
+   import React from "react";
+   import styles from "./Button.module.css";
+
+   interface ButtonProps {
+     variant?: "secondary";
+     children: React.ReactNode;
+   }
+
+   const Button: React.FC<ButtonProps> = ({ variant, children }) => {
+     const className =
+       variant === "secondary" ? styles.secondary : styles.button;
+     return <button className={className}>{children}</button>;
+   };
+
+   export default Button;
+   ```
+
+4. **Render the Button Component**:
+   **`App.tsx`**
+
+   ```tsx
+   import React from "react";
+   import Button from "./Button";
+
+   const App = () => (
+     <div>
+       <Button>Primary Button</Button>
+       <Button variant="secondary">Secondary Button</Button>
+     </div>
+   );
+
+   export default App;
+   ```
+
+#### Output
+
+You will see two buttons:
+
+- A **primary button** with blue background.
+- A **secondary button** with gray background.
+
+---
