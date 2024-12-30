@@ -18,6 +18,10 @@ export default function CountriesPage() {
 
   useEffect(() => {
     let isSubscribed = true;
+    console.log(
+      `start seach for: ${countryName} => subscribed: ${isSubscribed}`
+    );
+
     async function getCountries() {
       try {
         setIsLoading(true);
@@ -26,6 +30,9 @@ export default function CountriesPage() {
         const { data } = result;
         console.log(data);
         if (isSubscribed) {
+          console.log(
+            `setCountries seach for: ${countryName} => subscribed: ${isSubscribed}`
+          );
           setCountries(data?.data || data?.result);
         }
       } catch (error) {
@@ -37,8 +44,10 @@ export default function CountriesPage() {
     }
     getCountries();
     return () => {
-      console.log(isSubscribed, countryName);
       isSubscribed = false;
+      console.log(
+        `cleanup seach for: ${countryName} => subscribed: ${isSubscribed}`
+      );
     };
   }, [countryName]);
 
@@ -78,7 +87,7 @@ export default function CountriesPage() {
 
 function DummySkeletonCountries() {
   const skeletons = [];
-  for (let index = 0; index < 8; index++) {
+  for (let index = 0; index < 12; index++) {
     skeletons.push(
       <Skeleton key={index} variant="rectangular" width={300} height={500} />
     );

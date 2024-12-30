@@ -1,4 +1,4 @@
-import Routing from "..";
+import Routing from "../routing";
 
 export function Layout(): JSX.Element {
   return (

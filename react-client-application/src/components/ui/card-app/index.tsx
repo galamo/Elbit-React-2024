@@ -62,7 +62,7 @@ export default function CardApp() {
 }
 
 export function LikeSection() {
-  console.log("Like section render");
+  // console.log("Like section render");
   const [likes, setLikes] = useState(0);
   return (
     <div>
