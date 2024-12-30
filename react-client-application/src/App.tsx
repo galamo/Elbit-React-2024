@@ -1,32 +1,15 @@
-import { Button, TextField } from "@mui/material";
-// import "./App.css";
-import CountriesPage from "./components/pages/countriesPage";
-import RegistrationPage from "./components/pages/registerPage";
+import { BrowserRouter } from "react-router";
+import { Layout } from "./components/routing/layout";
 
 function App() {
   return (
     <>
       <div>
-        <RegistrationPage />
-        <CountriesPage />
+        <BrowserRouter>
+          <Layout />
+        </BrowserRouter>
       </div>
     </>
-  );
-}
-
-function LoginSection() {
-  return (
-    <div>
-      <div>
-        <TextField id="outlined-basic" label="User" variant="outlined" />
-      </div>
-      <div>
-        <TextField id="outlined-basic" label="password" variant="outlined" />
-      </div>
-      <div>
-        <Button variant="text">login</Button>
-      </div>
-    </div>
   );
 }
 
