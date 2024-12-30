@@ -4,6 +4,7 @@ import css from "./index.module.css";
 import Header from "../../ui/header";
 import { Button, CircularProgress, TextField } from "@mui/material";
 import { ChangeEvent, useRef, useState } from "react";
+import { useNavigate } from "react-router";
 
 const REGISTER_URL = "http://localhost:2200/auth/register";
 
@@ -11,6 +12,7 @@ export default function RegistrationPage() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const userNameRef = useRef<HTMLInputElement>(null);
 
@@ -18,14 +20,15 @@ export default function RegistrationPage() {
     try {
       setIsLoading(true);
       console.log("useRef -> Value in phone:", userNameRef?.current?.value);
-      const result = await axios.post(REGISTER_URL, {
+      await axios.post(REGISTER_URL, {
         userName: userName,
         password: password,
       });
-      const { data } = result;
       Swal.fire({
         title: "Success!",
         icon: "success",
+      }).then(() => {
+        navigate("/login");
       });
     } catch (error) {
       console.log(error);
