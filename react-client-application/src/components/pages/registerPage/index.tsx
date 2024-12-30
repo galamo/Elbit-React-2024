@@ -76,7 +76,7 @@ export default function RegistrationPage() {
               registerAction();
             }}
           >
-            Login
+            Register
           </Button>
         </div>
       )}
