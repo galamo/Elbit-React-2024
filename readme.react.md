@@ -1063,13 +1063,13 @@ const CalculatorExample = () => {
         padding: "20px",
       }}
     >
-      <h2>Factorial Calculator</h2>
+      <h2>Example</h2>
       <input
         type="number"
         value={number}
         onChange={(e) => setNumber(Number(e.target.value))}
       />
-      <h3>Factorial: {longCalc}</h3>
+      <h3>value: {longCalc}</h3>
       <button onClick={toggleTheme}>Toggle Theme</button>
     </div>
   );
