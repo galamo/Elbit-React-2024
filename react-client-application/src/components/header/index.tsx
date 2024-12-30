@@ -37,6 +37,9 @@ export default function HeaderNavigation() {
           <Button color="inherit">
             <NavLink to={"/countries-reports"}> reports </NavLink>
           </Button>
+          <Button color="inherit">
+            <NavLink to={"/settings"}> Settings </NavLink>
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>

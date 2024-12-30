@@ -7,8 +7,10 @@ import Typography from "@mui/material/Typography";
 import { CountryApi } from "..";
 import { LikeSection } from "../../../ui/card-app";
 import { NavLink, useNavigate } from "react-router";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { useImageLoaded } from "../../../../hooks/use-image-loaded";
+import { AppDateContext } from "../../../../App";
+import { format } from "date-fns";
 
 const bull = (
   <Box
@@ -31,6 +33,10 @@ export default function SingleCountry(props: CountryApi) {
       <CardContent>
         <Typography gutterBottom sx={{ color: "text.secondary", fontSize: 14 }}>
           {props?.name?.common}
+        </Typography>
+
+        <Typography gutterBottom sx={{ color: "text.secondary", fontSize: 14 }}>
+          <AppDate currentDate={new Date().toISOString()} />
         </Typography>
         <Typography variant="h5" component="div">
           {props?.name?.official}
@@ -73,3 +79,17 @@ function ImageElb(props: { imageUrl: string }) {
   return <img src={currentImage} height={200} />;
 }
 
+function AppDate(props: { currentDate: string }) {
+  const context = useContext(AppDateContext);
+  return (
+    <div>
+      <h2>
+        local time / utc:{" "}
+        {context.isUtc
+          ? new Date(props.currentDate).toISOString()
+          : new Date(props.currentDate).toString()}
+      </h2>
+      <h2> last updated at: {format(props.currentDate, context.format)}</h2>
+    </div>
+  );
+}

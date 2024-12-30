@@ -8,6 +8,7 @@ import CountriesReportsPage from "../pages/countriesReportsPage";
 import CountryPage from "../pages/countryPage";
 import { AuthLayout } from "../auth-layout";
 import { AsyncProtectedRoute } from "../protected-route";
+import SettingsPage from "../pages/settingsPage";
 
 export default function Routing(): JSX.Element {
   return (
@@ -20,6 +21,7 @@ export default function Routing(): JSX.Element {
           <Route index element={<CountriesPage />} />
         </Route>
         <Route path="/countries-reports" element={<CountriesReportsPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegistrationPage />} />
