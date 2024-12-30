@@ -3,8 +3,17 @@ import Swal from "sweetalert2";
 import css from "./index.module.css";
 import Header from "../../ui/header";
 import { Button, CircularProgress, TextField } from "@mui/material";
-import { ChangeEvent, useCallback, useRef, useState } from "react";
+import { ChangeEvent, useCallback, useState } from "react";
 import { useNavigate } from "react-router";
+import { z } from "zod";
+
+const Registration = z.object({
+  password: z.string().min(3),
+  userName: z.string().email(),
+  phone: z.string().min(10),
+});
+
+// Registration.parse({ username: "Ludwig" });
 
 const REGISTER_URL = "http://localhost:2200/auth/register";
 
@@ -12,6 +21,7 @@ export default function RegistrationPage() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
+
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   console.log("render?");
@@ -39,7 +49,6 @@ export default function RegistrationPage() {
   const handleUserName = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     setUserName(event.target.value);
   }, []);
-
 
   function handlePassword(event: ChangeEvent<HTMLInputElement>) {
     setPassword(event.target.value);
@@ -88,7 +97,19 @@ export default function RegistrationPage() {
             <div>
               <Button
                 onClick={() => {
-                  registerAction();
+                  const result = Registration.safeParse({
+                    userName,
+                    password,
+                    phone,
+                  });
+                  if (!result.success) {
+                    Swal.fire({
+                      title: `${result.error?.errors[0].message}`,
+                      icon: "error",
+                    });
+                  }
+                  // console.log(result.error?.errors[0].message);
+                  if (result.success) registerAction();
                 }}
               >
                 Register
