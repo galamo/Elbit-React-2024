@@ -14,7 +14,6 @@ export default function RegistrationPage() {
 
   const userNameRef = useRef<HTMLInputElement>(null);
 
-  console.log("RegistrationPage render...");
   async function registerAction() {
     try {
       setIsLoading(true);
@@ -37,49 +36,56 @@ export default function RegistrationPage() {
   }
 
   return (
-    <div>
-      <div className={css.headerCenter}>
-        <Header title={"Registration"} color={"Blue"} />
-      </div>
-      <div>
-        phone{" "}
-        <TextField
-          id="outlined-basic"
-          label="phone"
-          variant="outlined"
-          inputRef={userNameRef}
-          // ref={userNameRef}
-        />
-        <TextField
-          onChange={(event: ChangeEvent<HTMLInputElement>) => {
-            setUserName(event.target.value);
-          }}
-          id="outlined-basic"
-          label="username"
-          variant="outlined"
-        />
-        <TextField
-          onChange={(event: ChangeEvent<HTMLInputElement>) => {
-            setPassword(event.target.value);
-          }}
-          id="outlined-basic"
-          label="password"
-          variant="outlined"
-        />
-      </div>
-      {isLoading ? (
-        <CircularProgress />
-      ) : (
-        <div>
-          <Button
-            onClick={() => {
-              registerAction();
-            }}
-          >
-            Register
-          </Button>
+    <div className={css.container}>
+      <div className={css.registerContainer}>
+        <div className={css.headerCenter}>
+          <Header title={"Registration"} color={"Blue"} />
         </div>
-      )}
+        <div>
+          <TextField
+            id="outlined-basic"
+            label="phone"
+            variant="outlined"
+            inputRef={userNameRef}
+            // ref={userNameRef}
+          />
+        </div>
+        <div>
+          <TextField
+            onChange={(event: ChangeEvent<HTMLInputElement>) => {
+              setUserName(event.target.value);
+            }}
+            id="outlined-basic"
+            label="username"
+            variant="outlined"
+          />
+        </div>
+        <div>
+          <TextField
+            onChange={(event: ChangeEvent<HTMLInputElement>) => {
+              setPassword(event.target.value);
+            }}
+            id="outlined-basic"
+            label="password"
+            variant="outlined"
+          />
+        </div>
+        <div>
+          {isLoading ? (
+            <CircularProgress />
+          ) : (
+            <div>
+              <Button
+                onClick={() => {
+                  registerAction();
+                }}
+              >
+                Register
+              </Button>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
