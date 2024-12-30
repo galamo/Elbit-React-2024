@@ -28,7 +28,7 @@ export default function RegistrationPage() {
         title: "Success!",
         icon: "success",
       }).then(() => {
-        navigate("/login");
+        navigate("/auth/login");
       });
     } catch (error) {
       console.log(error);

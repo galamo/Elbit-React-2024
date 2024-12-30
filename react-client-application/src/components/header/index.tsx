@@ -26,10 +26,10 @@ export default function HeaderNavigation() {
             News
           </Typography>
           <Button color="inherit">
-            <NavLink to={"/login"}> Login </NavLink>
+            <NavLink to={"/auth/login"}> Login </NavLink>
           </Button>
           <Button color="inherit">
-            <NavLink to={"/register"}> Register </NavLink>
+            <NavLink to={"/auth/register"}> Register </NavLink>
           </Button>
           <Button color="inherit">
             <NavLink to={"/countries"}> countries </NavLink>

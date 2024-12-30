@@ -22,7 +22,8 @@ export default function LoginPage() {
       });
       if (result.status === 200) {
         localStorage.setItem("token", result?.data?.token);
-        navigate("/countries");
+        const takeLastPage = localStorage.getItem("lastVisitedPage") || "/home";
+        navigate(takeLastPage);
       }
     } catch (error) {
       console.log(error);

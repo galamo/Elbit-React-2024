@@ -8,7 +8,7 @@ export function Layout(): JSX.Element {
         <h1> React Client App </h1>
         <HeaderNavigation />
       </header>
-      <main>
+      <main>  
         <Routing />
       </main>
       <footer>
