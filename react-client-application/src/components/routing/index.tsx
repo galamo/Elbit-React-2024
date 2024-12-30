@@ -12,7 +12,7 @@ export default function Routing(): JSX.Element {
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/countries" element={<CountriesPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route index path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
