@@ -7,7 +7,7 @@ import LoginPage from "../pages/loginPage";
 import CountriesReportsPage from "../pages/countriesReportsPage";
 import CountryPage from "../pages/countryPage";
 import { AuthLayout } from "../auth-layout";
-import ProtectedRoute, { AsyncProtectedRoute } from "../protected-route";
+import { AsyncProtectedRoute } from "../protected-route";
 
 export default function Routing(): JSX.Element {
   return (

@@ -19,7 +19,11 @@ export function AsyncProtectedRoute() {
   useEffect(() => {
     async function auth() {
       try {
-        setIsLoading(true);
+        if (!lsHelper()) {
+          setIsLoading(false);
+          setIsTokenValid(false);
+          return;
+        }
         await axios.get("http://localhost:2200/secure", {
           headers: {
             authorization: localStorage.getItem("token"),
