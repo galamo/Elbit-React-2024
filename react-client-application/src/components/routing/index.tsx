@@ -5,6 +5,7 @@ import RegistrationPage from "../pages/registerPage";
 import NotFoundPage from "../pages/notFoundPage";
 import LoginPage from "../pages/loginPage";
 import CountriesReportsPage from "../pages/countriesReportsPage";
+import CountryPage from "../pages/countryPage";
 
 export default function Routing(): JSX.Element {
   return (
@@ -13,6 +14,7 @@ export default function Routing(): JSX.Element {
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/countries" element={<CountriesPage />} />
+        <Route path="/countries/:code" element={<CountryPage />} />
         <Route path="/countries-reports" element={<CountriesReportsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegistrationPage />} />

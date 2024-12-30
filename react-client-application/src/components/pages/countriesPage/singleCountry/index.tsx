@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { CountryApi } from "..";
 import { LikeSection } from "../../../ui/card-app";
+import { NavLink, useNavigate } from "react-router";
 
 const bull = (
   <Box
@@ -17,6 +18,7 @@ const bull = (
 );
 
 export default function SingleCountry(props: CountryApi) {
+  const navigate = useNavigate();
   return (
     <Card style={{ width: "300px", height: "500px" }}>
       <CardContent>
@@ -37,7 +39,22 @@ export default function SingleCountry(props: CountryApi) {
         <img src={props?.flags?.png} height={200} />
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button
+          size="small"
+          onClick={() => {
+            navigate(`/countries/${props?.name?.common}`);
+          }}
+        >
+          useNavigate
+        </Button>
+        <Button
+          size="small"
+          onClick={() => {
+            console.log("You clicked", props?.name?.common);
+          }}
+        >
+          <NavLink to={`/countries/${props?.name?.common}`}> NavLink</NavLink>
+        </Button>
         <LikeSection />
       </CardActions>
     </Card>
