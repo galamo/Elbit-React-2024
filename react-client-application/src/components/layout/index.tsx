@@ -1,3 +1,4 @@
+import HeaderNavigation from "../header";
 import Routing from "../routing";
 
 export function Layout(): JSX.Element {
@@ -5,6 +6,7 @@ export function Layout(): JSX.Element {
     <div className="Layout">
       <header>
         <h1> React Client App </h1>
+        <HeaderNavigation />
       </header>
       <main>
         <Routing />

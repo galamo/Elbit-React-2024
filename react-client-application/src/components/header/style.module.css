@@ -1,0 +1,9 @@
+.marginNavs > a {
+  margin: 20px;
+  font-size: 20px;
+}
+
+.marginNavs {
+  text-align: center;
+  background-color: aqua;
+}
