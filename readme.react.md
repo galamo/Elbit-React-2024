@@ -1343,6 +1343,4 @@ React Router DOM is a library for handling client-side routing in React applicat
 
 ### Ex - new route
 
-1. add new routes to the application:
-2. CountriesReports
-3. Countries Statistics
+1. add new routes to the application: CountriesReports
