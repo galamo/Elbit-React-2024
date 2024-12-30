@@ -4,13 +4,14 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import Header from "../../ui/header";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router";
 const LOGIN_URL = "http://localhost:2200/auth/login";
 
 export default function LoginPage() {
   const userNameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const [isLoading, setIsLoading] = useState(false);
-
+  const navigate = useNavigate();
   async function loginAction() {
     try {
       setIsLoading(true);
@@ -19,14 +20,16 @@ export default function LoginPage() {
         userName: userNameRef?.current?.value,
         password: passwordRef?.current?.value,
       });
-      console.log(result);
-      Swal.fire({
-        title: "Success!",
-        icon: "success",
-      });
+      if (result.status === 200) {
+        localStorage.setItem("token", result?.data?.token);
+        navigate("/countries");
+      }
     } catch (error) {
       console.log(error);
-      alert("Something went wrong!");
+      Swal.fire({
+        title: "Something went wrong!",
+        icon: "error",
+      });
     } finally {
       setIsLoading(false);
     }
