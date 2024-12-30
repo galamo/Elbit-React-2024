@@ -1021,3 +1021,328 @@ You will see two buttons:
 - A **secondary button** with gray background.
 
 ---
+
+Here’s a `README.md` file with examples and exercises for `useMemo` and `useCallback`.
+
+---
+
+# React Hooks: `useMemo` and `useCallback`
+
+## `useMemo`
+
+### Description
+
+The `useMemo` hook is used to optimize performance by memoizing expensive computations. It only recalculates the result when its dependencies change.
+
+### Example: Factorial Calculator
+
+```typescript
+import React, { useState, useMemo } from "react";
+
+const CalculatorExample = () => {
+  const [number, setNumber] = useState(0);
+  const [theme, setTheme] = useState("light");
+
+  const longCalc = useMemo(() => {
+    console.log("Calculating factorial...");
+    const longCalculation = (n: number): number => {
+      return Math.random() * 9999 + number;
+    };
+    return longCalculation(number);
+  }, [number]);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+
+  return (
+    <div
+      style={{
+        background: theme === "light" ? "#fff" : "#333",
+        color: theme === "light" ? "#000" : "#fff",
+        padding: "20px",
+      }}
+    >
+      <h2>Factorial Calculator</h2>
+      <input
+        type="number"
+        value={number}
+        onChange={(e) => setNumber(Number(e.target.value))}
+      />
+      <h3>Factorial: {longCalc}</h3>
+      <button onClick={toggleTheme}>Toggle Theme</button>
+    </div>
+  );
+};
+
+export default CalculatorExample;
+```
+
+---
+
+### Exercise: `useMemo`
+
+1. Add a feature to the long calculation to compute the sum of all numbers up to the given number (e.g., for input 5, the result should be 15).
+2. Use `useMemo` to memoize the sum calculation.
+3. Log when the sum is recalculated.
+
+---
+
+## `useCallback`
+
+### Description
+
+The `useCallback` hook is used to memoize functions so they don't get recreated unnecessarily, particularly useful when passing callbacks to child components.
+
+---
+
+### Example: Increment Button
+
+```tsx
+import React, { useState, useCallback } from "react";
+
+const IncrementButton = React.memo(
+  ({ increment }: { increment: () => void }) => {
+    console.log("Button rendered!");
+    return <button onClick={increment}>Increment</button>;
+  }
+);
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  const increment = useCallback(() => {
+    setCount((prevCount) => prevCount + 1);
+  }, []);
+
+  return (
+    <div>
+      <h2>Counter: {count}</h2>
+      <IncrementButton increment={increment} />
+    </div>
+  );
+};
+
+export default Counter;
+```
+
+---
+
+### Exercise: `useCallback`
+
+1. Modify the `Counter` example to include a decrement button. Use `useCallback` to memoize the decrement function.
+2. Pass the decrement function to a child component and confirm that it doesn’t re-render unnecessarily.
+
+---
+
+## Best Practices for `useMemo` and `useCallback`
+
+1. **When to Use:**
+
+   - Use `useMemo` for expensive computations that you want to avoid recalculating unless necessary.
+   - Use `useCallback` for passing functions as props to child components to prevent unnecessary re-renders.
+
+2. **Avoid Overuse:**
+
+   - Only use these hooks when optimization is required. Premature optimization can make your code harder to read and maintain.
+
+3. **Debugging:**
+   - Use tools like React Developer Tools to check when components re-render.
+
+---
+
+## Routing
+
+Here’s a `README.md` file with the explanations for the React Router DOM components:
+
+---
+
+# React Router DOM Components
+
+React Router DOM is a library for handling client-side routing in React applications. This document provides a concise explanation of its key components.
+
+---
+
+## Components Overview
+
+### **1. BrowserRouter**
+
+- **Purpose**: Enables client-side routing using the browser’s History API.
+- **Example**:
+
+  ```tsx
+  import { BrowserRouter } from "react-router-dom";
+
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>;
+  ```
+
+---
+
+### **2. Routes**
+
+- **Purpose**: Groups all the `Route` components to define routing paths.
+- **Example**:
+
+  ```tsx
+  import { Routes, Route } from "react-router-dom";
+
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/about" element={<About />} />
+  </Routes>;
+  ```
+
+---
+
+### **3. Route**
+
+- **Purpose**: Defines a specific path and the component to render for that path.
+- **Props**:
+  - `path`: URL path to match.
+  - `element`: Component to render when the path matches.
+- **Example**:
+  ```tsx
+  <Route path="/contact" element={<Contact />} />
+  ```
+
+---
+
+### **4. Link**
+
+- **Purpose**: Renders a navigation link that updates the URL without refreshing the page.
+- **Props**:
+  - `to`: The path to navigate to.
+- **Example**:
+
+  ```tsx
+  import { Link } from "react-router-dom";
+
+  <Link to="/about">Go to About</Link>;
+  ```
+
+---
+
+### **5. NavLink**
+
+- **Purpose**: Similar to `Link`, but adds styling to indicate the active route.
+- **Props**:
+  - `to`: The path to navigate to.
+  - `className`: Dynamically applies a class to the active link.
+- **Example**:
+
+  ```tsx
+  import { NavLink } from "react-router-dom";
+
+  <NavLink to="/home" className={({ isActive }) => (isActive ? "active" : "")}>
+    Home
+  </NavLink>;
+  ```
+
+---
+
+### **6. Outlet**
+
+- **Purpose**: Acts as a placeholder for rendering child routes in a nested routing setup.
+- **Example**:
+
+  ```tsx
+  import { Routes, Route, Outlet } from "react-router-dom";
+
+  const Dashboard = () => (
+    <div>
+      <h2>Dashboard</h2>
+      <Outlet />
+    </div>
+  );
+
+  <Routes>
+    <Route path="/dashboard" element={<Dashboard />}>
+      <Route path="profile" element={<Profile />} />
+      <Route path="settings" element={<Settings />} />
+    </Route>
+  </Routes>;
+  ```
+
+---
+
+### **7. useNavigate**
+
+- **Purpose**: Provides a function to programmatically navigate between routes.
+- **Example**:
+
+  ```tsx
+  import { useNavigate } from "react-router-dom";
+
+  const Home = () => {
+    const navigate = useNavigate();
+
+    const goToProfile = () => {
+      navigate("/profile");
+    };
+
+    return <button onClick={goToProfile}>Go to Profile</button>;
+  };
+  ```
+
+---
+
+### **8. useParams**
+
+- **Purpose**: Access route parameters from the URL.
+- **Example**:
+
+  ```tsx
+  import { useParams } from "react-router-dom";
+
+  const Profile = () => {
+    const { userId } = useParams();
+
+    return <h1>User ID: {userId}</h1>;
+  };
+  ```
+
+---
+
+### **9. useLocation**
+
+- **Purpose**: Provides information about the current URL, including `pathname` and `search`.
+- **Example**:
+
+  ```tsx
+  import { useLocation } from "react-router-dom";
+
+  const CurrentLocation = () => {
+    const location = useLocation();
+
+    return <p>Current Path: {location.pathname}</p>;
+  };
+  ```
+
+---
+
+### **10. useMatch**
+
+- **Purpose**: Matches the current location to a specific route pattern.
+- **Example**:
+
+  ```tsx
+  import { useMatch } from "react-router-dom";
+
+  const MatchRoute = () => {
+    const match = useMatch("/about");
+
+    return match ? (
+      <p>You are on the About page!</p>
+    ) : (
+      <p>Not on About page.</p>
+    );
+  };
+  ```
+
+### Ex - new route
+
+1. add new routes to the application:
+2. CountriesReports
+3. Countries Statistics
