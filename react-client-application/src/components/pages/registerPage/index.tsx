@@ -11,15 +11,13 @@ const REGISTER_URL = "http://localhost:2200/auth/register";
 export default function RegistrationPage() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
-  const userNameRef = useRef<HTMLInputElement>(null);
 
   async function registerAction() {
     try {
       setIsLoading(true);
-      console.log("useRef -> Value in phone:", userNameRef?.current?.value);
       await axios.post(REGISTER_URL, {
         userName: userName,
         password: password,
@@ -49,8 +47,10 @@ export default function RegistrationPage() {
             id="outlined-basic"
             label="phone"
             variant="outlined"
-            inputRef={userNameRef}
-            // ref={userNameRef}
+            onChange={(event: ChangeEvent<HTMLInputElement>) => {
+              setPhone(event.target.value);
+            }}
+            value={phone}
           />
         </div>
         <div>
@@ -61,6 +61,7 @@ export default function RegistrationPage() {
             id="outlined-basic"
             label="username"
             variant="outlined"
+            value={userName}
           />
         </div>
         <div>
@@ -71,6 +72,7 @@ export default function RegistrationPage() {
             id="outlined-basic"
             label="password"
             variant="outlined"
+            value={password}
           />
         </div>
         <div>
