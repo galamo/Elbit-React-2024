@@ -7,8 +7,8 @@ import Header from "../../ui/header";
 import debounce from "lodash/debounce";
 import { Badge, CircularProgress, Skeleton, TextField } from "@mui/material";
 
-const URL_ALL = "http://localhost:2200/countries-delay";
-const URL_NAME = "http://localhost:2200/countries-delay/name/";
+const URL_ALL = "http://localhost:2200/api/countries-delay";
+const URL_NAME = "http://localhost:2200/api/countries-delay/name/";
 
 export type CountryApi = (typeof data)[0];
 export default function CountriesPage() {
@@ -33,6 +33,7 @@ export default function CountriesPage() {
           console.log(
             `setCountries seach for: ${countryName} => subscribed: ${isSubscribed}`
           );
+          // @ts-ignore
           setCountries(data?.data || data?.result);
         }
       } catch (error) {

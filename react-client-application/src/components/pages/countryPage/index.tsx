@@ -4,11 +4,11 @@ import { CountryApi } from "../countriesPage";
 import axios from "axios";
 import SingleCountry from "../countriesPage/singleCountry";
 import { WithLoading } from "../../ui/with-loading";
-const SINGLE_URL = `http://localhost:2200/countries-delay/name`;
+const SINGLE_URL = `http://localhost:2200/api/countries-delay/name`;
 export default function CountryPage() {
   const params = useParams();
   const [isLoading, setIsLoading] = useState(true);
-  const [country, setCountry] = useState<CountryApi>(null);
+  const [country, setCountry] = useState<CountryApi | null>(null);
 
   useEffect(() => {
     console.log(params.code);
@@ -39,7 +39,7 @@ export default function CountryPage() {
       <h1>Country Page: {params.code}</h1>
       <div>
         <WithLoading isLoading={isLoading}>
-          <SingleCountry {...country} />
+          <SingleCountry {...(country as CountryApi)} />
         </WithLoading>
       </div>
     </div>

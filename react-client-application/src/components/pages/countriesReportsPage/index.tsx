@@ -3,59 +3,7 @@ import axios from "axios";
 import { PieChart, Pie, Cell } from "recharts";
 import { CountryApi } from "../countriesPage";
 import { Button } from "@mui/material";
-const URL_ALL = "http://localhost:2200/countries-delay";
-const data01 = [
-  {
-    name: "Group A",
-    value: 400,
-  },
-  {
-    name: "Group B",
-    value: 300,
-  },
-  {
-    name: "Group C",
-    value: 300,
-  },
-  {
-    name: "Group D",
-    value: 200,
-  },
-  {
-    name: "Group E",
-    value: 278,
-  },
-  {
-    name: "Group F",
-    value: 189,
-  },
-];
-const data02 = [
-  {
-    name: "Group A",
-    value: 2400,
-  },
-  {
-    name: "Group B",
-    value: 4567,
-  },
-  {
-    name: "Group C",
-    value: 1398,
-  },
-  {
-    name: "Group D",
-    value: 9800,
-  },
-  {
-    name: "Group E",
-    value: 3908,
-  },
-  {
-    name: "Group F",
-    value: 4800,
-  },
-];
+const URL_ALL = "http://localhost:2200/api/countries-delay";
 
 const data = [
   { name: "Group A", value: 400 },
@@ -65,8 +13,6 @@ const data = [
 ];
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
-
-const RADIAN = Math.PI / 180;
 
 export default function CountriesReportsPage() {
   const countriesInitialState: Array<CountryApi> = [];
@@ -85,7 +31,7 @@ export default function CountriesReportsPage() {
       try {
         const result = await axios.get<CountryApi[]>(URL_ALL);
         const { data } = result;
-
+        // @ts-ignore
         setCountries(data?.data);
       } catch (error) {
         console.log(error);
@@ -146,7 +92,7 @@ function PopulationPieChart(props: {
         outerRadius={200}
         fill="#8884d8"
       >
-        {data.map((entry, index) => (
+        {data.map((_, index) => (
           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
         ))}
       </Pie>
@@ -177,9 +123,3 @@ const adaptDataPieChart = (obj: any) => {
     return { name: key, value };
   });
 };
-
-function convertNumberWithCommaDelimiter(n: string) {
-  return Number(parseFloat(n).toFixed(0)).toLocaleString("en", {
-    minimumFractionDigits: 0,
-  });
-}

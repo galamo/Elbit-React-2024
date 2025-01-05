@@ -1,5 +1,4 @@
 // import styled from "styled-components";
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -28,14 +27,7 @@ import { useState } from "react";
 //   width: 400px;
 //   height: 300px;
 // `;
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
+
 const defaultImage = "https://elbitsystems.com/media/WP-PULS.jpg";
 export default function CardApp() {
   const [url, setUrl] = useState(defaultImage);

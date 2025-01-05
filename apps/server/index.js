@@ -9,13 +9,12 @@ const bodyParser = require("body-parser");
 NODE_TLS_REJECT_UNAUTHORIZED = 0;
 const data = require("./data/index.json");
 
-const app = express();
-app.use(cors());
+const mainApp = express();
+const app = express.Router();
+mainApp.use(cors());
 initDB();
+mainApp.use("/api", app);
 
-app.use((req, res, next) => {
-  next();
-});
 app.use(bodyParser.json());
 
 app.get("/employees", async (req, res, next) => {
@@ -491,9 +490,9 @@ app.get("/teams", (req, res, next) => {
 
 //https://restcountries.com/v3.1/alpha/{code}
 
-app.use((error, req, res, next) => {
+mainApp.use((error, req, res, next) => {
   console.log(error);
   res.send("Something went wrong");
 });
 
-app.listen(process.env.PORT);
+mainApp.listen(process.env.PORT);

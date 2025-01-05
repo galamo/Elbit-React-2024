@@ -24,7 +24,7 @@ export function AsyncProtectedRoute() {
           setIsTokenValid(false);
           return;
         }
-        await axios.get("http://localhost:2200/secure", {
+        await axios.get("http://localhost:2200/api/secure", {
           headers: {
             authorization: localStorage.getItem("token"),
           },

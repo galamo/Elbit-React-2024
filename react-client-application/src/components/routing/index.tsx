@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useParams } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 import HomePage from "../pages/homePage";
 import CountriesPage from "../pages/countriesPage";
 import RegistrationPage from "../pages/registerPage";

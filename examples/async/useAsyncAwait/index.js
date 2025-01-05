@@ -2,7 +2,7 @@
 const axios = require("axios")
 
 const countriesUrl = "https://restcountries.com/v3.1/all"
-const countriesUrlLocal = "http://localhost:2200/countries-elbit"
+const countriesUrlLocal = "http://localhost:2200/api/countries-elbit"
 
 async function getCountriesData(){
     try {

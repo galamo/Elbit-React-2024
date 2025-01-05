@@ -5,7 +5,7 @@ import axios from "axios";
 import Header from "../../ui/header";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router";
-const LOGIN_URL = "http://localhost:2200/auth/login";
+const LOGIN_URL = "http://localhost:2200/api/auth/login";
 
 export default function LoginPage() {
   const userNameRef = useRef<HTMLInputElement>(null);
@@ -16,7 +16,7 @@ export default function LoginPage() {
     try {
       setIsLoading(true);
       console.log("useRef -> Value in phone:", userNameRef?.current?.value);
-      const result = await axios.post(LOGIN_URL, {
+      const result = await axios.post<{ token: string }>(LOGIN_URL, {
         userName: userNameRef?.current?.value,
         password: passwordRef?.current?.value,
       });

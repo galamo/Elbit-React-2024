@@ -15,7 +15,7 @@ const Registration = z.object({
 
 // Registration.parse({ username: "Ludwig" });
 
-const REGISTER_URL = "http://localhost:2200/auth/register";
+const REGISTER_URL = "http://localhost:2200/api/auth/register";
 
 export default function RegistrationPage() {
   const [userName, setUserName] = useState("");

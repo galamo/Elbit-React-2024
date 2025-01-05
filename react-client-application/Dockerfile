@@ -6,8 +6,8 @@ COPY package*.json ./
 
 RUN npm install
 
-COPY . .
-COPY .env.docker /usr/src/app/.env
+COPY server.js /usr/src/app/server.js
+COPY dist /usr/src/app/dist
 
 EXPOSE 2200
 CMD [ "npm", "start" ]
