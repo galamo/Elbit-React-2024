@@ -1345,11 +1345,18 @@ React Router DOM is a library for handling client-side routing in React applicat
 
 1. add new routes to the application: CountriesReports
 
-
-
 # Subjects:
+
 1. Context, useReducer.
 2. Suspense - Lazy loading
-3. Redux 
+3. Redux
 4. dockerizing the client application
 5. useTransition
+
+# useContext & useReducer
+
+1. Support new feature in the Setting page.
+2. The feature will change number format, for example, 1000 => 1K , use https://www.npmjs.com/package/millify
+3. in the settings page add button - readable pretty number - on/off
+4. in case the button is on - so the number will be presented as 1K
+5. otherwise, keep the regular long numbers.
