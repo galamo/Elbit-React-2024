@@ -4,6 +4,58 @@ import { PieChart, Pie, Cell } from "recharts";
 import { CountryApi } from "../countriesPage";
 import { Button } from "@mui/material";
 const URL_ALL = "http://localhost:2200/countries-delay";
+const data01 = [
+  {
+    name: "Group A",
+    value: 400,
+  },
+  {
+    name: "Group B",
+    value: 300,
+  },
+  {
+    name: "Group C",
+    value: 300,
+  },
+  {
+    name: "Group D",
+    value: 200,
+  },
+  {
+    name: "Group E",
+    value: 278,
+  },
+  {
+    name: "Group F",
+    value: 189,
+  },
+];
+const data02 = [
+  {
+    name: "Group A",
+    value: 2400,
+  },
+  {
+    name: "Group B",
+    value: 4567,
+  },
+  {
+    name: "Group C",
+    value: 1398,
+  },
+  {
+    name: "Group D",
+    value: 9800,
+  },
+  {
+    name: "Group E",
+    value: 3908,
+  },
+  {
+    name: "Group F",
+    value: 4800,
+  },
+];
 
 const data = [
   { name: "Group A", value: 400 },
@@ -52,15 +104,25 @@ export default function CountriesReportsPage() {
       >
         Click to resize {size}
       </Button>
-      <div style={{ display: "flex" }}>
-        <PopulationPieChart
-          pieChartGlobalSettings={"resolution"}
-          adaptedData={data}
-        />
-        <PopulationPieChart
-          pieChartGlobalSettings={"resolution"}
-          adaptedData={adaptedData}
-        />
+      <div
+        style={{
+          width: "80%",
+          display: "flex",
+          justifyContent: "space-around",
+        }}
+      >
+        <div>
+          <PopulationPieChart
+            pieChartGlobalSettings={"resolution"}
+            adaptedData={data}
+          />
+        </div>
+        <div>
+          <PopulationPieChart
+            pieChartGlobalSettings={"resolution"}
+            adaptedData={adaptedData}
+          />
+        </div>
       </div>
     </>
   );
@@ -70,22 +132,19 @@ function PopulationPieChart(props: {
   pieChartGlobalSettings: string;
   adaptedData: Array<{ name: string; value: number | any }>;
 }) {
+  console.log(props.adaptedData);
   return (
-    <PieChart width={500} height={400}>
+    <PieChart width={700} height={700}>
       <Pie
+        dataKey={"value"}
         data={props.adaptedData}
         cx="50%"
         cy="50%"
-        labelLine={true}
-        label={(pr: any) => {
-          return renderCustomizedLabel({
-            ...pr,
-            // pieChartGlobalSettings: props.pieChartGlobalSettings,
-          });
+        label={({ name, value }: { name: string; value: number }) => {
+          return `${name}: ${value}`;
         }}
         outerRadius={200}
         fill="#8884d8"
-        dataKey="value"
       >
         {data.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -117,39 +176,6 @@ const adaptDataPieChart = (obj: any) => {
   return Object.entries(obj).map(([key, value]) => {
     return { name: key, value };
   });
-};
-
-const renderCustomizedLabel = ({
-  cx,
-  cy,
-  midAngle,
-  name,
-  innerRadius,
-  outerRadius,
-  percent,
-  index,
-  label,
-  value,
-  pieChartGlobalSettings,
-  ...rest
-}: any) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy + radius * Math.sin(-midAngle * RADIAN);
-  const isPrecentage = pieChartGlobalSettings === "precentage";
-  return (
-    <text
-      x={x}
-      y={y}
-      fill="black"
-      textAnchor={x > cx ? "start" : "end"}
-      dominantBaseline="central"
-    >
-      {isPrecentage
-        ? `${(percent * 100).toFixed(0)}%`
-        : `${name}: ${convertNumberWithCommaDelimiter(value)}`}
-    </text>
-  );
 };
 
 function convertNumberWithCommaDelimiter(n: string) {

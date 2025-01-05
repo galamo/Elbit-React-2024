@@ -5,10 +5,9 @@ export function Layout(): JSX.Element {
   return (
     <div className="Layout">
       <header>
-        <h1> React Client App </h1>
         <HeaderNavigation />
       </header>
-      <main>  
+      <main>
         <Routing />
       </main>
       <footer>

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-dev": "nodemon index.js",
+    "dev": "nodemon index.js",
     "start": "node index.js",
     "install-globals": "npm install typescript -g nodemon -g"
   },
