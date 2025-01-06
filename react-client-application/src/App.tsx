@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router";
 import { Layout } from "./components/layout";
-import { createContext, Suspense } from "react";
+import { createContext } from "react";
 import SettingsProvider from "./context/settingsProvider";
 
 interface IAppDateContext {
@@ -17,14 +17,14 @@ function App() {
   return (
     <>
       <div>
-      
-          <SettingsProvider>
-            <AppDateContext.Provider value={{ format: "dd/MMM/yy", isUtc: true }}>
-              <BrowserRouter>
-                <Layout />
-              </BrowserRouter>
-            </AppDateContext.Provider>
-          </SettingsProvider>
+
+        <SettingsProvider>
+          <AppDateContext.Provider value={{ format: "dd/MMM/yy", isUtc: true }}>
+            <BrowserRouter>
+              <Layout />
+            </BrowserRouter>
+          </AppDateContext.Provider>
+        </SettingsProvider>
       </div>
     </>
   );
