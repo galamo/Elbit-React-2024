@@ -582,3 +582,10 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 1. subscribe only what you need
 2. shallowEqual
+
+
+## EX - redux
+1. convert the settings useReducer / useContext to work with redux
+2. isLocalTime
+3. dateFormat
+4. isPrettyNumber
