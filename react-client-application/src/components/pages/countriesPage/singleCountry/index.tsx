@@ -10,8 +10,7 @@ import { useContext } from "react";
 import { useImageLoaded } from "../../../../hooks/use-image-loaded";
 import { AppDateContext } from "../../../../App";
 import { format } from "date-fns";
-
-
+import { SettingsContext } from "../../../../context";
 
 export default function SingleCountry(props: CountryApi) {
   const navigate = useNavigate();
@@ -73,11 +72,14 @@ function ImageElb(props: { imageUrl: string }) {
 
 function AppDate(props: { currentDate: string }) {
   const context = useContext(AppDateContext);
+  const settingsContext = useContext(SettingsContext);
+  console.log(settingsContext);
   return (
     <div>
       <h2>
-        local time / utc:{" "}
-        {context.isUtc
+        DateTime:{settingsContext.isLocalTime.toString()}
+        <br />
+        {settingsContext.isLocalTime
           ? new Date(props.currentDate).toISOString()
           : new Date(props.currentDate).toString()}
       </h2>
