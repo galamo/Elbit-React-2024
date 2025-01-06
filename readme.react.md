@@ -1355,8 +1355,79 @@ React Router DOM is a library for handling client-side routing in React applicat
 
 # useContext & useReducer
 
+### Settings Page
+
+1. implement settings toggle button
+
+### EX
+
 1. Support new feature in the Setting page.
 2. The feature will change number format, for example, 1000 => 1K , use https://www.npmjs.com/package/millify
 3. in the settings page add button - readable pretty number - on/off
 4. in case the button is on - so the number will be presented as 1K
 5. otherwise, keep the regular long numbers.
+
+## Part 3: Suspense and Concurrent Features in React
+
+### **1. Suspense**
+
+`Suspense` is a React component that allows you to handle loading states for lazy-loaded components or asynchronous operations. It displays a fallback UI while the requested component is being loaded.
+
+#### Key Points:
+
+- Works with React’s `lazy` function to load components dynamically.
+- Provides a better user experience by showing fallback content during loading.
+
+#### Example:
+
+```jsx
+import React, { Suspense, lazy } from "react";
+
+// Lazy load the component
+const CarDetails = lazy(() => import("./CarDetails"));
+
+const App = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <CarDetails />
+  </Suspense>
+);
+
+export default App;
+```
+
+### **2. Concurrent Features**
+
+React’s concurrent features allow React to interrupt rendering to handle more important updates, like user interactions, providing a smoother user experience.
+
+#### Key Points:
+
+- Improves responsiveness for complex apps.
+- Works seamlessly with `Suspense` for handling asynchronous tasks.
+
+#### Example:
+
+Concurrent features are enabled automatically with `ReactDOM.createRoot`.
+
+```jsx
+import React, { Suspense, lazy } from "react";
+import { createRoot } from "react-dom/client";
+
+const CarDetails = lazy(() => import("./CarDetails"));
+
+const App = () => (
+  <Suspense fallback={<div>Loading...</div>}>
+    <CarDetails />
+  </Suspense>
+);
+
+const root = createRoot(document.getElementById("root"));
+root.render(<App />);
+```
+
+---
+
+## Summary
+
+- **Suspense** simplifies lazy loading and provides fallback UI for better user experience.
+- **Concurrent features** improve responsiveness by prioritizing rendering tasks.
+- Use `Suspense` with `lazy` to optimize component loading in your app.

@@ -462,3 +462,123 @@ export default App;
 
 - **Jotai** is more granular and works well for independent states like individual form fields.
 - **Zustand** provides a centralized state, which can be easier to manage for medium-sized applications.
+
+Here's a concise implementation of **Redux Toolkit** with an example:
+
+---
+
+### Step 1: Install Redux Toolkit and React-Redux
+
+```bash
+npm install @reduxjs/toolkit react-redux
+```
+
+---
+
+### Step 2: Create a Redux Store with a Slice
+
+**`store.ts`**:
+
+```javascript
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+
+// Create a slice
+const counterSlice = createSlice({
+  name: "counter",
+  initialState: { value: 0 },
+  reducers: {
+    increment: (state) => {
+      state.value += 1;
+    },
+    decrement: (state) => {
+      state.value -= 1;
+    },
+    incrementByAmount: (state, action) => {
+      state.value += action.payload;
+    },
+  },
+});
+
+// Export actions and reducer
+export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+const store = configureStore({ reducer: { counter: counterSlice.reducer } });
+
+export default store;
+```
+
+---
+
+### Step 3: Provide the Store to Your App
+
+**`index.ts`**:
+
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import store from "./store";
+import App from "./App";
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
+```
+
+---
+
+### Step 4: Create a Component to Use Redux State
+
+**`App.js`**:
+
+```javascript
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement, incrementByAmount } from "./store";
+
+function App() {
+  const count = useSelector((state) => state.counter.value); // Access state
+  const dispatch = useDispatch(); // Dispatch actions
+
+  return (
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h1>Counter: {count}</h1>
+      <button onClick={() => dispatch(increment())}>Increment</button>
+      <button onClick={() => dispatch(decrement())}>Decrement</button>
+      <button onClick={() => dispatch(incrementByAmount(5))}>
+        Increment by 5
+      </button>
+    </div>
+  );
+}
+
+export default App;
+```
+
+```typescript
+// connect state to component => into component
+// connect dispatch to component => out from component
+
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from ".";
+
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+```
+
+### Explanation
+
+1. **`createSlice`**: Combines `actions` and `reducers` in one place.
+2. **`configureStore`**: Automatically sets up the Redux store.
+3. **`Provider`**: Makes the Redux store available to your entire app.
+4. **`useSelector`**: Accesses the state from the Redux store.
+5. **`useDispatch`**: Dispatches actions to update the state.
+
+---
+
+# Note
+
+1. subscribe only what you need
+2. shallowEqual
