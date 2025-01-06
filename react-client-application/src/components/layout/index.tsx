@@ -8,7 +8,7 @@ export function Layout(): JSX.Element {
         <HeaderNavigation />
       </header>
       <main>
-          <Routing />
+        <Routing />
       </main>
       <footer>
         <span> footer </span>

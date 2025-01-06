@@ -1,10 +1,8 @@
 import { Navigate, Route, Routes } from "react-router";
 // import HomePage from "../pages/homePage";
-import CountriesPage from "../pages/countriesPage";
 import RegistrationPage from "../pages/registerPage";
 import NotFoundPage from "../pages/notFoundPage";
 import LoginPage from "../pages/loginPage";
-import CountriesReportsPage from "../pages/countriesReportsPage";
 import CountryPage from "../pages/countryPage";
 import { AuthLayout } from "../auth-layout";
 import { AsyncProtectedRoute } from "../protected-route";
@@ -13,11 +11,14 @@ import { lazy, Suspense } from "react"
 const HomePageLazy = lazy(() => {
   // @ts-ignore
   return new Promise((resolve) => setTimeout(() => resolve(import("../pages/homePage")), 5000))
-  // return import("../pages/homePage")
 })
 const CountriesPageLazy = lazy(() => {
   return import("../pages/countriesPage")
 })
+const CountriesReportsPageLazy = lazy(() => {
+  return import("../pages/countriesReportsPage")
+})
+
 export default function Routing(): JSX.Element {
   return (
     <div className="Routing">
@@ -37,7 +38,11 @@ export default function Routing(): JSX.Element {
             </Suspense>
           } />
         </Route>
-        <Route path="/countries-reports" element={<CountriesReportsPage />} />
+        <Route path="/countries-reports" element={
+          <Suspense fallback={<MainLoader />}>
+            <CountriesReportsPageLazy />
+          </Suspense>
+        } />
         <Route path="/settings" element={<SettingsPage />} />
         <Route path="/auth" element={<AuthLayout />}>
           <Route path="login" element={<LoginPage />} />
