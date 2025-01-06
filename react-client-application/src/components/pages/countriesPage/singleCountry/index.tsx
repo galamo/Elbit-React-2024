@@ -20,7 +20,7 @@ export default function SingleCountry(props: CountryApi) {
   }
 
   return (
-    <Card style={{ width: "300px", height: "500px" }}>
+    <Card style={{ width: "300px", height: "650px" }}>
       <CardContent>
         <Typography gutterBottom sx={{ color: "text.secondary", fontSize: 14 }}>
           {props?.name?.common}
