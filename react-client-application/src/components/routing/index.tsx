@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router";
-import HomePage from "../pages/homePage";
+// import HomePage from "../pages/homePage";
 import CountriesPage from "../pages/countriesPage";
 import RegistrationPage from "../pages/registerPage";
 import NotFoundPage from "../pages/notFoundPage";
@@ -9,13 +9,16 @@ import CountryPage from "../pages/countryPage";
 import { AuthLayout } from "../auth-layout";
 import { AsyncProtectedRoute } from "../protected-route";
 import SettingsPage from "../pages/settingsPage";
+import { lazy } from "react"
+
+const HomePageLazy = lazy(() => import("../pages/homePage"))
 
 export default function Routing(): JSX.Element {
   return (
     <div className="Routing">
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/home" element={<HomePageLazy />} />
         <Route path="/countries/:code" element={<CountryPage />} />
         <Route path="/countries" element={<AsyncProtectedRoute />}>
           <Route index element={<CountriesPage />} />
