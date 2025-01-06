@@ -1,28 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { CountryApi } from "../../../components/pages/countriesPage"
 
 interface ICountriesState {
     countries: Array<CountryApi>;
     favorites: Array<CountryApi>;
+    counter: number
 }
 
 const initState: ICountriesState = {
     countries: [],
-    favorites: []
+    favorites: [],
+    counter: 0
 }
 
 export const countriesSlice = createSlice({
     name: "countries",
     initialState: initState,
     reducers: {
-        setCountries: () => {
-            // 
+        // setCountries: (state, action: PayloadAction<CountryApi>) => {
+        //     // 
+        // },
+        addToFavorite: (state, action: PayloadAction<CountryApi>) => {
+            state.favorites.push(action.payload)
         },
-        addToFavorite: () => {
-            // "ADD_TO_FAVORITE"
+        increaseCounter: (state, action: PayloadAction<number>) => {
+            state.counter = state.counter + 1
         }
     }
 })
 
-export const { setCountries, addToFavorite } = countriesSlice.actions;
+export const { addToFavorite, increaseCounter } = countriesSlice.actions;
 export default countriesSlice.reducer

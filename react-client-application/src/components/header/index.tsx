@@ -6,8 +6,24 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import css from "./style.module.css";
+import { useAppSelector } from "../../store/hooks";
+import { shallowEqual } from "react-redux";
 
 export default function HeaderNavigation() {
+  // const favorites = useAppSelector((state) => state.countries.favorites)
+
+  // DONT DO THIS
+  // const { favorites } = useAppSelector((state) => {
+  //   return { favorites: state.countries.favorites }
+  // })
+  // const { favorites } = useAppSelector((state) => state.countries)
+  // INSTEAD DO THIS:
+  // const favorites = useAppSelector((state) => state.countries.favorites)
+  // OR THIS:
+  const { favorites } = useAppSelector((state) => {
+    return { favorites: state.countries.favorites }
+  }, shallowEqual)
+
   return (
     <Box sx={{ flexGrow: 1 }} className={css.marginNavs}>
       <AppBar position="static">
@@ -38,6 +54,9 @@ export default function HeaderNavigation() {
           </Button>
           <Button color="inherit">
             <NavLink to={"/settings"}> Settings </NavLink>
+          </Button>
+          <Button color="inherit">
+            <NavLink to={"/favorites"}> Favorites ({favorites.length}) </NavLink>
           </Button>
         </Toolbar>
       </AppBar>

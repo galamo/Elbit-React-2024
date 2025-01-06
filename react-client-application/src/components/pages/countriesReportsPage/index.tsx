@@ -5,6 +5,8 @@ import { CountryApi } from "../countriesPage";
 import { Button } from "@mui/material";
 import { SettingsContext } from "../../../context";
 import millify from "millify";
+import { useAppDispatch } from "../../../store/hooks";
+import { increaseCounter } from "../../../store/slices/countries";
 const URL_ALL = "http://localhost:2200/api/countries-delay";
 
 const data = [
@@ -20,7 +22,7 @@ export default function CountriesReportsPage() {
   const countriesInitialState: Array<CountryApi> = [];
   const [countries, setCountries] = useState(countriesInitialState);
   const [size, setSize] = useState(0);
-
+  const dispatch = useAppDispatch()
   // const result = calcPopulationPerRegion(countries);
 
   const result = useMemo(() => {
@@ -48,6 +50,7 @@ export default function CountriesReportsPage() {
       <Button
         onClick={() => {
           setSize(size + 10);
+          dispatch(increaseCounter(1))
         }}
       >
         Click to resize {size}

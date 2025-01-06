@@ -11,16 +11,19 @@ import { useImageLoaded } from "../../../../hooks/use-image-loaded";
 import { AppDateContext } from "../../../../App";
 import { format } from "date-fns";
 import { SettingsContext } from "../../../../context";
+import { useAppDispatch } from "../../../../store/hooks";
+import { addToFavorite } from "../../../../store/slices/countries";
 
 export default function SingleCountry(props: CountryApi) {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch()
   let imgurl = props?.flags?.png;
   if (props?.name?.common?.toLowerCase() === "palestine") {
     imgurl = "broken";
   }
 
   return (
-    <Card style={{ width: "300px", height: "650px" }}>
+    <Card style={{ width: "400px", height: "700px" }}>
       <CardContent>
         <Typography gutterBottom sx={{ color: "text.secondary", fontSize: 14 }}>
           {props?.name?.common}
@@ -60,6 +63,9 @@ export default function SingleCountry(props: CountryApi) {
           <NavLink to={`/countries/${props?.name?.common}`}> NavLink</NavLink>
         </Button>
         <LikeSection />
+        <Button onClick={() => {
+          dispatch(addToFavorite(props))
+        }}> Add to favorites </Button>
       </CardActions>
     </Card>
   );
