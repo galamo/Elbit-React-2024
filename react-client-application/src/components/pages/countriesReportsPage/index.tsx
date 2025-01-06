@@ -1,8 +1,10 @@
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { PieChart, Pie, Cell } from "recharts";
 import { CountryApi } from "../countriesPage";
 import { Button } from "@mui/material";
+import { SettingsContext } from "../../../context";
+import millify from "millify";
 const URL_ALL = "http://localhost:2200/api/countries-delay";
 
 const data = [
@@ -78,6 +80,7 @@ function PopulationPieChart(props: {
   pieChartGlobalSettings: string;
   adaptedData: Array<{ name: string; value: number | any }>;
 }) {
+  const settingsContext = useContext(SettingsContext)
   console.log(props.adaptedData);
   return (
     <PieChart width={700} height={700}>
@@ -86,8 +89,9 @@ function PopulationPieChart(props: {
         data={props.adaptedData}
         cx="50%"
         cy="50%"
+
         label={({ name, value }: { name: string; value: number }) => {
-          return `${name}: ${value}`;
+          return settingsContext.isPrettyNumber ? `${name}: ${millify(value)}` : `${name}=> ${value}`
         }}
         outerRadius={200}
         fill="#8884d8"

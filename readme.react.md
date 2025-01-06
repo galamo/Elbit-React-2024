@@ -1431,3 +1431,7 @@ root.render(<App />);
 - **Suspense** simplifies lazy loading and provides fallback UI for better user experience.
 - **Concurrent features** improve responsiveness by prioritizing rendering tasks.
 - Use `Suspense` with `lazy` to optimize component loading in your app.
+
+
+# Support Lazy loading
+- support lazy loading the Counties Component
