@@ -80,8 +80,8 @@ function AppDate(props: { currentDate: string }) {
         DateTime:{settingsContext.isLocalTime.toString()}
         <br />
         {settingsContext.isLocalTime
-          ? new Date(props.currentDate).toISOString()
-          : new Date(props.currentDate).toString()}
+          ? new Date(props.currentDate).toString()
+          : new Date(props.currentDate).toISOString()  }
       </h2>
       <h2> last updated at: {format(props.currentDate, context.format)}</h2>
     </div>
