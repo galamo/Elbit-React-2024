@@ -17,9 +17,7 @@ export const countriesSlice = createSlice({
     name: "countries",
     initialState: initState,
     reducers: {
-        // setCountries: (state, action: PayloadAction<CountryApi>) => {
-        //     // 
-        // },
+
         addToFavorite: (state, action: PayloadAction<CountryApi>) => {
             state.favorites.push(action.payload)
         },
