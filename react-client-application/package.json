@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "bundle-size":"source-map-explorer ./dist/assets/*.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -23,13 +24,16 @@
     "axios": "^1.7.9",
     "date-fns": "^4.1.0",
     "express": "^4.21.2",
+    "i": "^0.3.7",
     "lodash": "^4.17.21",
     "millify": "^6.1.0",
+    "npm": "^11.0.0",
     "path": "^0.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router": "^7.1.1",
     "recharts": "^2.15.0",
+    "source-map-explorer": "^2.5.3",
     "styled-components": "^6.1.13",
     "sweetalert2": "^11.15.3",
     "zod": "^3.24.1"

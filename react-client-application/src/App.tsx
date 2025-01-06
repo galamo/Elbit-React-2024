@@ -2,7 +2,7 @@ import { BrowserRouter } from "react-router";
 import { Layout } from "./components/layout";
 import { createContext } from "react";
 import SettingsProvider from "./context/settingsProvider";
-import ErrorBoundary from "./components/error/error";
+// import ErrorBoundary from "./components/error/error";
 
 interface IAppDateContext {
   format: string;
