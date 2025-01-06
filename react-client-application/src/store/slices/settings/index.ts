@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 interface ISettingsState {
     isLocalTime: boolean
@@ -12,8 +12,8 @@ export const settingsSlice = createSlice({
     name: "settings",
     initialState: initState,
     reducers: {
-        setIsLocalTime: () => {
-            // 
+        setIsLocalTime: (state, action: PayloadAction<boolean>) => {
+            state.isLocalTime = action.payload
         }
     }
 })

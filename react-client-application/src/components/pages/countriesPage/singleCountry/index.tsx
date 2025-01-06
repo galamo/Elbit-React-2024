@@ -11,7 +11,7 @@ import { useImageLoaded } from "../../../../hooks/use-image-loaded";
 import { AppDateContext } from "../../../../App";
 import { format } from "date-fns";
 import { SettingsContext } from "../../../../context";
-import { useAppDispatch } from "../../../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import { addToFavorite } from "../../../../store/slices/countries";
 
 export default function SingleCountry(props: CountryApi) {
@@ -77,14 +77,17 @@ function ImageElb(props: { imageUrl: string }) {
 }
 
 function AppDate(props: { currentDate: string }) {
+  // CONTEXT API STATE MANAGEMENT 
   const context = useContext(AppDateContext);
   const settingsContext = useContext(SettingsContext);
+  // REDUX STATE MANAGEMENT 
+  const isLocaltime = useAppSelector(state => state.settingsSlice.isLocalTime)
   return (
     <div>
       <h2>
         DateTime:{settingsContext.isLocalTime.toString()}
         <br />
-        {settingsContext.isLocalTime
+        {isLocaltime
           ? new Date(props.currentDate).toString()
           : new Date(props.currentDate).toISOString()}
       </h2>
