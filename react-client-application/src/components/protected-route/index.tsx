@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router";
 import axios from "axios";
+import { MainLoader } from "../routing";
 export default function ProtectedRoute() {
   const isTokenExist = lsHelper();
   console.log(window.location.href);
@@ -41,7 +42,7 @@ export function AsyncProtectedRoute() {
   }, []);
 
   return isLoading ? (
-    <h1> loading...</h1>
+    <MainLoader />
   ) : isTokenValid ? (
     <Outlet />
   ) : (

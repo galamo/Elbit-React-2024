@@ -1434,4 +1434,4 @@ root.render(<App />);
 
 
 # Support Lazy loading
-- support lazy loading the Counties Component
+- support lazy loading the Reports Component
