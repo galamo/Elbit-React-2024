@@ -73,7 +73,6 @@ function ImageElb(props: { imageUrl: string }) {
 function AppDate(props: { currentDate: string }) {
   const context = useContext(AppDateContext);
   const settingsContext = useContext(SettingsContext);
-  console.log(settingsContext);
   return (
     <div>
       <h2>
@@ -81,7 +80,7 @@ function AppDate(props: { currentDate: string }) {
         <br />
         {settingsContext.isLocalTime
           ? new Date(props.currentDate).toString()
-          : new Date(props.currentDate).toISOString()  }
+          : new Date(props.currentDate).toISOString()}
       </h2>
       <h2> last updated at: {format(props.currentDate, context.format)}</h2>
     </div>
