@@ -1,4 +1,7 @@
 function getUserMetric(metric) {
   return metric.map((u) => u.numberOfLoginActions);
 }
-module.exports = { getUserMetric };
+function test(a) {
+  return 1 + a;
+}
+module.exports = { getUserMetric, test };
